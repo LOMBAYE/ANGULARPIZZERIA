@@ -29,3 +29,8 @@ export interface Catalogue{
     menus:Menu[],
     burgers:Burger[]
 }
+ // private menu:Observable<Menu> = from(
+  //   [
+
+  //   ]
+  // )

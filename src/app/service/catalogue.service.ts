@@ -8,11 +8,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CatalogueService implements OnInit{
+  
 
-  constructor(http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.findCherries();
+    // this.findCherries();
   }
   private catalogue:Catalogue = {
     menus:[{
@@ -81,23 +82,26 @@ export class CatalogueService implements OnInit{
 
   getCatalogue():Catalogue{
     return this.catalogue;
+    
   }
 
-  findProduitById(num:number):any{
+  findProduitById(num:number):Menu|Burger{
     // equivalent a parcourir le tableau pour retrouver l element en question
-    const produitTrouve=(this.catalogue.burgers.concat(this.catalogue.menus)).find(
+    const produitTrouve=(this.catalogue.burgers.concat(this.catalogue.menus)).filter(
       (produit:Menu|Burger)=>{
         return produit.id===num;
       }
     )
-    return produitTrouve; 
+    return produitTrouve[0]; 
   }
-   findCherries() { 
-    return this.catalogue.burgers;
+ 
+
+  // url=environment.baseUrl+'catalogues'; 
+  private url=environment.baseUrl; 
+
+  getAllProducts():Observable<Burger[] |Menu[]>{
+    return this.http.get<Burger[] |Menu[]>(this.url);
   }
-
-
-  url=environment.baseUrl+'catalogues'; 
 
   // getCat(){
   //   return new Observable((observer)=>{
