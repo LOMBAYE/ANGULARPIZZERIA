@@ -1,0 +1,19 @@
+<form #test="ngForm" (ngSubmit)="valider(test)">
+    <input #nom="ngModel" type="text" name="nom" placeholder="Nom" NgModel required minLength="3" [(ngModel)]="personne.nom">
+    <br>
+    <small *ngIf="!nom.dirty && nom.touched">Invalid</small>
+    <br>
+    <input type="text" name="prenom" placeholder="Prenom" NgModel>
+    <br>
+    <select name="sexe" id="">
+        <option value="m">M</option>
+        <option value="f">F</option>
+    </select>
+    <br>
+    <input type="radio" name="type" value="full" ngModel>Fullstack
+    <input type="radio" name="type" value="front" ngModel>Front
+    <input type="radio" name="type" value="full" ngModel>Back
+    <br>
+    <input type="submit" value="submit" [disabled]="!test.valid">
+
+</form>

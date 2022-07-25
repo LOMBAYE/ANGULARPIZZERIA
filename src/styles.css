@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.accueil {
+    height: 400px;
+    background-image: url(assets/images/burger-spread-four-hands.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#main {
+    background-color: #f5ebdc;
+}
+
+#navbarColor,
+#title {
+    color: #502314;
+}
+
+#signup {
+    color: #d62300;
+}
+
+#navbarColor:hover,
+#signup:hover {
+    background-color: #d62300;
+    color: white;
+}
+
+#navbarUn {
+    height: auto;
+    color: #502314;
+    background-image: url(assets/images/logo.png);
+    background-size: cover;
+}
+
+#search {
+    margin-left: 95%;
+}
+
+#navbar {
+    padding: 1rem;
+}

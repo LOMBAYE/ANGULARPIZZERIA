@@ -1,0 +1,10 @@
+<form [formGroup]="groupe" (ngSubmit)="recuperer()">
+    <label for="">Prenom</label>
+    <!-- NgModel=formControlName-->
+    <input type="text" formControlName="prenom">
+    <label for="">nom</label>
+    <input type="text" formControlName="nom">
+    <label for="">Age</label>
+    <input type="number" formControlName="age">
+    <button>Envoyer</button>
+</form>

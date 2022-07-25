@@ -1,0 +1,24 @@
+<!--<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>Nom</th>
+        <th>Prix</th>
+    </tr>
+    <tr *ngFor="let result of tab">
+        <td>{{result.nom}}</td>
+        <td class="text-danger">{{result.prix}}</td>
+    </tr>
+</table>-->
+<!--<input type="text" [(ngModel)]="search">-->
+<h5 class="text-center" id="title">You can't build peace on empty stomachs</h5>
+<div class="input-group mb-lg-3" id="search">
+    <div class="form-outline">
+        <input type="search" id="form1" class="form-control" />
+        <label class="form-label float-lg-end" for="form1">Filter</label>
+    </div>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+</div>
+<div class="row">
+    <app-produits *ngFor="let produit of produits" class="col-sm-4 mb-4" [produitRecu]="produit"></app-produits>
+</div>
