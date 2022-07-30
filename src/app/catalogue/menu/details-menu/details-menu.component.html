@@ -5,49 +5,29 @@
             <!--Property binding {{}}, event binding [a]={}-->
             <h5 class="card-title">{{product.nom}}</h5>
             <img class="card-img-top" [src]="transform(product.image)" alt="Card image cap">
-            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
             <i class="bi bi-cart"></i>
-            <i class="fas fa-shopping-cart text-primary float-end fa-2x" title="Ajouter Au Panier"></i>
-            <a [routerLink]="['/']" class="btn btn-sm btn-primary float-right">BUY</a>
+            <i class="fas fa-shopping-cart text-primary float-end fa-2x" *ngIf="true" title="Ajouter Au Panier" (click)="ajouterAuPanier(product)"></i>
+            <a [routerLink]="['/']" class="btn btn-sm btn-primary float-right" title="Ajouter Au Panier">BUY</a>
             <h5 class="btn btn-sm disabled btn-outline-primary">{{product.prix}} F</h5>
         </div>
     </div>
+    hhhhh
 </div>
 <hr>
 
 <br>
 <br>
+<h3 class="card-title text-center mt-2" id="title">CHOOSE YOUR DRINKS</h3>
 <div class="row">
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1a">
-            <label class="custom-control-label" for="ck1a">
-                <img src="https://images.unsplash.com/photo-1524802020103-aa46eaffcaa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHNvZGF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="#" class="img-fluid">
-            </label>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1b">
-            <label class="custom-control-label" for="ck1b">
-                <img src="https://images.unsplash.com/photo-1569961384048-0001b31bb6f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Ym9pc3NvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="#" class="img-fluid">
-            </label>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1c">
-            <label class="custom-control-label" for="ck1c">
-                <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHNvZGF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="#" class="img-fluid">
-            </label>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="custom-control custom-checkbox image-checkbox">
-            <input type="checkbox" class="custom-control-input" id="ck1d">
-            <label class="custom-control-label" for="ck1d">
-                <img src="https://images.unsplash.com/photo-1524802020103-aa46eaffcaa2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHNvZGF8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="#" class="img-fluid">
-            </label>
+    <div class="col-md-3" *ngFor="let taille of tailles">
+        <div class="row">
+            <div class="custom-control custom-checkbox image-checkbox" *ngFor="let boisson of boissons">
+                <h5>{{boisson.nom}}</h5>
+                <input type="checkbox" class="custom-control-input" id="ck1a">
+                <label class="custom-control-label" for="ck1a">
+                    <img [src]="transform(boisson.image)" alt="#" class="img-fluid">
+              </label>
+            </div>
         </div>
     </div>
 </div>

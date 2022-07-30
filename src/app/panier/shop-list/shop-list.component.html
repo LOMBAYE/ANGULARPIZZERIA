@@ -3,9 +3,9 @@
 
         <div class="row align-items-center">
             <div class="col-md-2">
-                <img src="assets/images/ranch.jpg" class="img-fluid" alt="Generic placeholder image">
+                <img [src]="transform(item.image)" class="img-fluid" alt="Generic placeholder image">
                 <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash" (onClick)="removeCartItem(item)"></i>
               </button>
             </div>
             <div class="col-md-2 d-flex justify-content-center">

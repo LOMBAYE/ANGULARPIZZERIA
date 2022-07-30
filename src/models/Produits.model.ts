@@ -23,6 +23,10 @@ export interface Boissons{
     qte?:number,
     type?:string
 }
+export interface Taille{
+    id: number,
+    libelle:string,
+}
 export interface Menu{
     id: number,
     nom:string,
@@ -30,7 +34,7 @@ export interface Menu{
     prix:number,
     burgers:Burger[],
     frites:Frites[],
-    boissons:Boissons[],
+    tailles:Taille[],
     qte?:number,
     type?:string
 }

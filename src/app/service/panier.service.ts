@@ -67,6 +67,7 @@ getItemsSubject(){
       }),
     ).subscribe();
   }
+
 removeCartItem(product: any){
     this.items$.pipe(
       take(1),
@@ -77,6 +78,9 @@ removeCartItem(product: any){
       }),
     ).subscribe();
 }
-  
+ 
+// itemInCart(item): boolean {
+//   return this.items$.findIndex(o => o.id === item.id) > -1;
+// }
 }
 

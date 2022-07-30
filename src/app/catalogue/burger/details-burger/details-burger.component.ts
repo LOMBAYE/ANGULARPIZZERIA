@@ -17,11 +17,11 @@ export class DetailsBurgerComponent implements OnInit {
 
   ngOnInit(): void {
     const idProduit = +this.r.snapshot.params['id'];
-    this.cataServ.findProduit(idProduit).subscribe(data => {
+    this.cataServ.findBurger(idProduit).subscribe(data => {
       this.product=data;     
     });
-    // this.product= this.cataServ.findProduit(idProduit);
   }
+  
   transform(params: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
   }

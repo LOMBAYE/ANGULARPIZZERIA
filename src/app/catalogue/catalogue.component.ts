@@ -19,9 +19,9 @@ export class CatalogueComponent implements OnInit {
   // tab:Catalogue={ menus:[],burgers:[]}; 
   
   // produits:Menu[]|Burger[] = [];
-catalogue!:any
-menus!:any;
-burgers!:any;
+catalogue!:Catalogue
+menus!:Menu[];
+burgers!:Burger[];
   ngOnInit(): void {
     //  const imgPath=this.domSan.bypassSecurityTrustResourceUrl()
     // this.cataServ.getAllProducts().subscribe(
@@ -33,7 +33,7 @@ burgers!:any;
         response=>{
           this.burgers=response.burgers;
           this.menus=response.menus;
-          console.log(this.menus);
+          // console.log(this.menus);
         }
         );
         

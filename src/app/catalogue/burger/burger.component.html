@@ -3,7 +3,7 @@
         <!--Property binding {{}}, event binding [a]={}-->
         <h5 class="card-title" id="title">{{produit.nom}}</h5>
         <a [routerLink]="['/burger',produit.id]">
-            <img class="card-img-top" [src]="transform(produit.image)" alt="Card image cap">
+            <img class="img-fluid" [src]="transform(produit.image)" alt="Card image cap">
         </a>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         <i class="fas fa-shopping-cart text-primary float-end" (click)="ajouterAuPanier(produit)" title="Ajouter Au Panier"></i>

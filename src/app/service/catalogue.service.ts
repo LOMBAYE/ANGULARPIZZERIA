@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CatalogueService implements OnInit{
   
 
-  constructor(private http: HttpClient ,private sanitizer:DomSanitizer) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     // console.log(this.getAllProducts()); 
@@ -32,17 +32,20 @@ export class CatalogueService implements OnInit{
  burger_url="http://127.0.0.1:8000/api/burgers/"
  produit_url="http://127.0.0.1:8000/api/produits/"
  
- getCatalogue():Observable<any>{
-  return this.http.get<any>(this.cata_url);
+ getCatalogue():Observable<Catalogue>{
+  return this.http.get<Catalogue>(this.cata_url);
  }
 
  findProduit(id:number):Observable<Burger|Menu>{
   return this.http.get<Burger|Menu>(this.produit_url+id);
  }
+ findMenu(id:number):Observable<Menu>{
+  return this.http.get<Menu>(this.menu_url+id);
+ }
+ findBurger(id:number):Observable<Burger>{
+  return this.http.get<Burger>(this.burger_url+id);
+ }
 
- transform(params: string){
-  return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
-}
 
   // url=environment.baseUrl+'catalogues'; 
   // url=environment.baseUrl; 
