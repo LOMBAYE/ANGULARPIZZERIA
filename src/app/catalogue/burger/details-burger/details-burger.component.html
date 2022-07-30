@@ -3,7 +3,7 @@
     <div class="card-body">
         <!--Property binding {{}}, event binding [a]={}-->
         <h5 class="card-title">{{product.nom}}</h5>
-        <img class="card-img-top" src="assets/images/ranch.jpg" alt="Card image cap">
+        <img class="card-img-top" [src]="transform(product.image)" alt="Card image cap">
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
         <i class="bi bi-cart"></i>
         <a [routerLink]="['/']" class="btn btn-sm btn-primary float-right">BUY</a>

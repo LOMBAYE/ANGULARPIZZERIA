@@ -9,7 +9,7 @@
     </tr>
 </table>-->
 <!--<input type="text" [(ngModel)]="search">-->
-<h5 class="text-center" id="title">You can't build peace on empty stomachs</h5>
+<h5 class="text-center larger" id="titre">You can't build peace on empty stomachs</h5>
 <div class="input-group mb-lg-3" id="search">
     <div class="form-outline">
         <input type="search" id="form1" class="form-control" />
@@ -20,5 +20,15 @@
     </button>
 </div>
 <div class="row">
-    <app-produits *ngFor="let produit of produits" class="col-sm-3 mb-4" [produitRecu]="produit"></app-produits>
+    <h5 class="card-title text-center mt-2" id="title">OUR BURGERS</h5>
+    <ng-container>
+        <app-burger *ngFor="let burger of burgers" class="col-sm-3 mb-4 mt-3" [produitRecu]="burger"></app-burger>
+    </ng-container>
+    <br>
+    <br>
+    <h5 class="card-title text-center mt-2" id="title">OUR MENUS</h5>
+    <br>
+    <ng-container>
+        <app-menu *ngFor="let menu of menus" class="col-sm-3 mb-4 mt-3" [produitRecu]="menu"></app-menu>
+    </ng-container>
 </div>

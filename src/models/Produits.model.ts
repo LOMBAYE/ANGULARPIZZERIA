@@ -3,18 +3,25 @@ export interface Burger{
     nom:string,
     image:string,
     prix:number,
+    qte?:number,
+    type?:string,
+    isInPanier?:boolean
 }
 export interface Frites{
     id: number,
     nom:string,
     image:string,
     prix:number,
+    qte?:number,
+    type?:string
 }
 export interface Boissons{
     id: number,
     nom:string,
     image:string,
     prix:number,
+    qte?:number,
+    type?:string
 }
 export interface Menu{
     id: number,
@@ -23,7 +30,9 @@ export interface Menu{
     prix:number,
     burgers:Burger[],
     frites:Frites[],
-    boissons:Boissons[]
+    boissons:Boissons[],
+    qte?:number,
+    type?:string
 }
 export interface Catalogue{
     menus:Menu[],

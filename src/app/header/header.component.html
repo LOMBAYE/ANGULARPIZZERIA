@@ -32,6 +32,11 @@
                     </div>
                 </li>
             </ul>
+            <a routerLink="/panier" *ngIf="(items$ | async).length!=0">
+                <i class="fas fa-shopping-cart fs-3 basket-comp text-danger m-lg-3">
+                    <span class="span-header">{{(items$ | async).length}}</span>
+                </i>
+            </a>
             <form class="d-flex">
                 <a routerLink="/signup">
                     <button class="btn btn-danger text-white my-2 my-sm-0" type="submit" id="signup">Sign Up</button>

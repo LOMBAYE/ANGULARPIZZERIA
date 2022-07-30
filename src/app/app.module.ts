@@ -16,6 +16,12 @@ import { DetailsComponent } from './catalogue/produits/details/details.component
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthentifyComponent } from './authentify/authentify.component';
+import { PanierComponent } from './panier/panier.component';
+import { ShopListComponent } from './panier/shop-list/shop-list.component';
+import { BurgerComponent } from './catalogue/burger/burger.component';
+import { MenuComponent } from './catalogue/menu/menu.component';
+import { DetailsMenuComponent } from './catalogue/menu/details-menu/details-menu.component';
+import { DetailsBurgerComponent } from './catalogue/burger/details-burger/details-burger.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +37,12 @@ import { AuthentifyComponent } from './authentify/authentify.component';
     DetailsComponent,
     NotFoundComponent,
     AuthentifyComponent,
+    PanierComponent,
+    ShopListComponent,
+    BurgerComponent,
+    MenuComponent,
+    DetailsMenuComponent,
+    DetailsBurgerComponent,
   ],
   imports: [
     BrowserModule,

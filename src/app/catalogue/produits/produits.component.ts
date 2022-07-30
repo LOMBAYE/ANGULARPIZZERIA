@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PanierService } from 'src/app/service/panier.service';
 import { Burger, Menu } from 'src/models/Produits.model';
 
 @Component({
@@ -10,10 +11,18 @@ export class ProduitsComponent implements OnInit {
   
 @Input('produitRecu') produit!:Burger |Menu;
 
-  constructor() { }
+noAddToListIfMenu: boolean = false;
+  constructor(private panierService:PanierService) { }
 
   ngOnInit(): void {
     // console.log(this.produit);
   }
 
+  ajouterAuPanier(produit:Burger|Menu){
+    // if(this.noAddToListIfMenu){
+
+      this.panierService.addToCart(produit);
+    // }
+  }
+ 
 }

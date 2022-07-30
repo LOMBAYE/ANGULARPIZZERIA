@@ -1,0 +1,56 @@
+[{
+        "id": 9,
+        "nom": "MENU 1",
+        "image": "assets/images/menuCom2.jpeg",
+        "prix": 5000,
+        "burgers": [{
+            "id": 1,
+            "nom": "CHEESE BURGER",
+            "prix": 2000,
+            "image": "assets/images/burgersalad.jpeg"
+        }],
+        "frites": [],
+        "boissons": []
+    },
+    {
+        "id": 7,
+        "nom": "MENU 2",
+        "image": "assets/images/menu1.jpg",
+        "prix": 5000,
+        "burgers": [{
+                "id": 1,
+                "nom": "CHEESE BURGER",
+                "prix": 2000,
+                "image": "assets/images/burgersalad.jpeg"
+            },
+            {
+                "id": 2,
+                "nom": "DOUBLE BURGER",
+                "prix": 4000,
+                "image": "assets/images/burger1.jpeg"
+            }
+        ],
+        "frites": [],
+        "boissons": []
+    },
+    {
+        "id": 1,
+        "nom": "CHEESE BURGER",
+        "prix": 2000,
+        "image": "assets/images/burgersalad.jpeg"
+    },
+    {
+        "id": 2,
+        "nom": "DOUBLE BURGER",
+        "prix": 4000,
+        "image": "assets/images/burger1.jpeg"
+    },
+    {
+        "id": 5,
+        "nom": "DOUBLE SMASH",
+        "prix": 2000,
+        "image": "assets/images/ranch.jpg"
+    }
+
+
+]

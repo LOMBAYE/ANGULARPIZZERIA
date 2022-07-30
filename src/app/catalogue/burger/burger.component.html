@@ -2,11 +2,11 @@
     <div class="card-body">
         <!--Property binding {{}}, event binding [a]={}-->
         <h5 class="card-title" id="title">{{produit.nom}}</h5>
-        <a [routerLink]="['/catalogue',produit.id]">
-            <img class="card-img-top" src="assets/images/ranch.jpg" alt="Card image cap">
+        <a [routerLink]="['/burger',produit.id]">
+            <img class="card-img-top" [src]="transform(produit.image)" alt="Card image cap">
         </a>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-        <i class="fas fa-shopping-cart text-primary float-end" *ngIf="produit.prix<=5000" (click)="ajouterAuPanier(produit)" title="Ajouter Au Panier"></i>
+        <i class="fas fa-shopping-cart text-primary float-end" (click)="ajouterAuPanier(produit)" title="Ajouter Au Panier"></i>
         <a class="btn btn-sm btn-primary float-right">BUY</a>
         <h5 class="btn btn-sm disabled btn-outline-primary m-lg-2">{{produit.prix}} F</h5>
     </div>

@@ -3,17 +3,17 @@ import { Observable } from 'rxjs';
 import { PanierService } from '../service/panier.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-panier',
+  templateUrl: './panier.component.html',
+  styleUrls: ['./panier.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class PanierComponent implements OnInit {
 
   constructor(private panierService: PanierService) { }
-  
-  items$?:Observable<any>=this.panierService.items$;
 
+  totalPrice: number = 0;
   ngOnInit(): void {
   }
-
+  items$?:Observable<any>=this.panierService.items$;
+   
 }

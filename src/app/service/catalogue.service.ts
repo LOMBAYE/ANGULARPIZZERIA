@@ -3,6 +3,7 @@ import { Burger, Catalogue, Menu } from 'src/models/Produits.model';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -10,119 +11,41 @@ import { Observable } from 'rxjs';
 export class CatalogueService implements OnInit{
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient ,private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
-    // this.findCherries();
-  }
-  private catalogue:Catalogue = {
-    menus:[{
-      id: 9,
-      nom:"MENU 1",
-      image:'assets/images/menuCom2.jpeg',
-      prix:5000,
-      burgers:[
-        {
-        id: 1,
-          nom:"CHEESE BURGER",
-          prix:2000,
-          image:'assets/images/burgersalad.jpeg'
-        }
-      ],
-      frites:[],
-      boissons:[]
-    },
-    {
-      id: 7,
-      nom:"MENU 2",
-      image:'assets/images/menu1.jpg',
-      prix:5000,
-      burgers:[
-        {
-        id: 1,
-          nom:"CHEESE BURGER",
-          prix:2000,
-          image:'assets/images/burgersalad.jpeg'
-        },
-        {
-        id: 2,
-          nom:"DOUBLE BURGER",
-          prix:4000,
-          image:'assets/images/burger1.jpeg'
-        }
-      ],
-      frites:[],
-      boissons:[]
-    },   
-    ],
-    burgers:[
-      {
-        id: 1,
-        nom:"CHEESE BURGER",
-        prix:2000,
-        image:'assets/images/burgersalad.jpeg'
-      },
-      {
-        id: 2,
-        nom:"DOUBLE BURGER",
-        prix:4000,
-        image:'assets/images/burger1.jpeg'
-      },
-      {
-        id: 5,
-        nom:"DOUBLE SMASH",
-        prix:2000,
-        image:'assets/images/ranch.jpg'
-      }
-      
-    ]
-  }
-  ;
- 
-
-  getCatalogue():Catalogue{
-    return this.catalogue;
-    
+    // console.log(this.getAllProducts()); 
   }
 
-  findProduitById(num:number):Menu|Burger{
-    // equivalent a parcourir le tableau pour retrouver l element en question
-    const produitTrouve=(this.catalogue.burgers.concat(this.catalogue.menus)).filter(
-      (produit:Menu|Burger)=>{
-        return produit.id===num;
-      }
-    )
-    return produitTrouve[0]; 
-  }
+  // findProduitById(num:number):Menu|Burger{
+  //   // equivalent a parcourir le tableau pour retrouver l element en question
+  //   const produitTrouve=(this.catalogue.burgers.concat(this.catalogue.menus)).filter(
+  //     (produit:Menu|Burger)=>{
+  //       return produit.id===num;
+  //     }
+  //   )
+  //   return produitTrouve[0]; 
+  // }
+
+ cata_url="http://127.0.0.1:8000/api/catalogues"
+ menu_url="http://127.0.0.1:8000/api/menus/"
+ burger_url="http://127.0.0.1:8000/api/burgers/"
+ produit_url="http://127.0.0.1:8000/api/produits/"
  
+ getCatalogue():Observable<any>{
+  return this.http.get<any>(this.cata_url);
+ }
+
+ findProduit(id:number):Observable<Burger|Menu>{
+  return this.http.get<Burger|Menu>(this.produit_url+id);
+ }
+
+ transform(params: string){
+  return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
+}
 
   // url=environment.baseUrl+'catalogues'; 
-  private url=environment.baseUrl; 
+  // url=environment.baseUrl; 
 
-  getAllProducts():Observable<Burger[] |Menu[]>{
-    return this.http.get<Burger[] |Menu[]>(this.url);
-  }
-
-  // getCat(){
-  //   return new Observable((observer)=>{
-  //     this.http.get(this.url,{withCredentials:true}).subscribe(result=>{
-         
-  //       })
-  //   }
-  //   );
-  // }
-  // getFriends(){
-  //   this.http.get<any>('http://localhost:8888/friends').subscribe(
-  //     response => {
-  //       console.log(response);
-  //       this.catalogue = response;
-  //     }
-  //   );
-  // }
-  getId(){
-    return new Observable((observer)=>{
-      
-    }
-    );
-  }
+ 
 }
