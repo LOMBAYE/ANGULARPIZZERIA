@@ -4,8 +4,8 @@
         <div class="row align-items-center">
             <div class="col-md-2">
                 <img [src]="transform(item.image)" class="img-fluid" alt="Generic placeholder image">
-                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                <i class="fas fa-trash" (onClick)="removeCartItem(item)"></i>
+                <button type="button" class="btn btn-primary btn-sm me-1 mb-2  mt-2" data-mdb-toggle="tooltip" title="Remove item">
+                <i class="fas fa-trash" (click)="removeCartItem(item)"></i>
               </button>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-2 d-flex justify-content-center">
                 <form class="form-outline">
-                    <input id="form1" min="1" name="quantity" value="{{item.qte}}" [(ngModel)]="item.qte" type="number" NgModel class="form-control" />
                     <label class="form-label" for="form1">Quantity</label>
+                    <input id="form1" min="1" name="quantity" value="{{item.qte}}" [(ngModel)]="item.qte" type="number" NgModel class="form-control" />
                 </form>
             </div>
             <div class="col-md-2 d-flex justify-content-center">

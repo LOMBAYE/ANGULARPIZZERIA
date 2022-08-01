@@ -39,9 +39,12 @@ export class CatalogueService implements OnInit{
  findProduit(id:number):Observable<Burger|Menu>{
   return this.http.get<Burger|Menu>(this.produit_url+id);
  }
+ 
  findMenu(id:number):Observable<Menu>{
-  return this.http.get<Menu>(this.menu_url+id);
+  return this.http.get<Menu>("http://127.0.0.1:8000/api/menus/"+id);
  }
+
+
  findBurger(id:number):Observable<Burger>{
   return this.http.get<Burger>(this.burger_url+id);
  }

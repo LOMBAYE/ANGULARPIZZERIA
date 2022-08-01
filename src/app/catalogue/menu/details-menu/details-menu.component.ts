@@ -15,6 +15,7 @@ export class DetailsMenuComponent implements OnInit {
   product!:Menu;
   tailles!:[];
 boissons!:Boissons[];
+
   constructor(private r:ActivatedRoute,private cataServ:CatalogueService,
     private router:Router,private sanitizer:DomSanitizer,
     private prodServ:ProduitsService,private panierService:PanierService) { }
@@ -23,21 +24,29 @@ boissons!:Boissons[];
     const idProduit = +this.r.snapshot.params['id'];
     this.cataServ.findMenu(idProduit).subscribe(
       menu=>{
-        this.product=menu      
+        this.product=menu 
+        // console.log(this.product.tailles);
+             
       })
 
       this.prodServ.findMenuTaille(idProduit).subscribe(
         response=>{
-          // console.log(response);
+          console.log(response);
           this.tailles=response;
+          this.prodServ.getB(response[0].id).subscribe(
+            res=>{
+             console.log(res);    
+            }
+          )
         }
       )
+     
       this.prodServ.findAllBoissonTailles(idProduit).subscribe(
         res=>{
         //  console.log(res);    
         }
       )
-         this.prodServ.collectionOfBoissons(10).subscribe(
+         this.prodServ.collectionOfBoissons(25).subscribe(
             a=>{
               // console.log(a);
               

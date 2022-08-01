@@ -20,6 +20,9 @@ export class ProduitsService {
     return this.http.get<any>("http://127.0.0.1:8000/api/boissons");
    }
    collectionOfBoissons(id:number):Observable<any>{
-    return this.http.get<any>("http://127.0.0.1:8000/api/boissons/"+25+"/boisson_tailles")
+    return this.http.get<any>("http://127.0.0.1:8000/api/boissons/"+id+"/boisson_tailles")
+   }
+   getB(id:number):Observable<any>{
+    return this.http.get<any>("http://127.0.0.1:8000/api/tailles/"+id+"/boisson_tailles")
    }
 }

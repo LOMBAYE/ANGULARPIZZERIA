@@ -5,7 +5,7 @@
         <h5 class="card-title">{{product.nom}}</h5>
         <img class="card-img-top" [src]="transform(product.image)" alt="Card image cap">
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-        <i class="bi bi-cart"></i>
+        <i class="fas fa-shopping-cart text-primary float-end  mt-2 hover" (click)="ajouterAuPanier(product)" title="Ajouter Au Panier"></i>
         <a [routerLink]="['/']" class="btn btn-sm btn-primary float-right">BUY</a>
         <h5 class="btn btn-sm disabled btn-outline-primary">{{product.prix}} F</h5>
     </div>

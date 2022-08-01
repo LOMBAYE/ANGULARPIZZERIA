@@ -49,7 +49,7 @@ import { DetailsBurgerComponent } from './catalogue/burger/details-burger/detail
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

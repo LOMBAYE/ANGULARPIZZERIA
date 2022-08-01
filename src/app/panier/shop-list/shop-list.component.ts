@@ -16,7 +16,7 @@ export class ShopListComponent implements OnInit {
   constructor(private sanitizer:DomSanitizer,private panierService: PanierService) { }
 
   ngOnInit(): void {
-    this.item.qte=10;
+    this.item.qte=1;
   }
 
   addNewItem(value: number) {

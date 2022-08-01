@@ -48,20 +48,14 @@ getItemsSubject(){
          })
           if (found) {
             if (toDo === "add") {
-              product.qty++
-            }else if (toDo === "minus"){
-                  if (products[index].qty>1) {
-                    product.qty--
-                  }
+              product.qte++
             }
             products[index]=product;
           }else{
 
-            product.qty = 1
+            product.qte = 1
             products.push(product)
           }
-
-
         this.itemsSubject.next(products);
         localStorage.setItem('products', JSON.stringify(products));
       }),
