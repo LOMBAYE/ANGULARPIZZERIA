@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map,take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,14 @@ export class ShopListService {
     this.total.next(existingCartItems);
     this.quantity.next(existingCartItems);
   }
+
+  // addToCart(num: number) {
+  //   this.quantity$.pipe(
+  //     take(1),
+  //     map((products) => {
+  //       products.add(num);
+  //       localStorage.setItem('products', JSON.stringify(products));
+  //     }),
+  //   ).subscribe();
+  // }
 }

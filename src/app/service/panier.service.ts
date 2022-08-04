@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { map,take } from 'rxjs/operators';
 
@@ -9,7 +10,8 @@ export class PanierService {
   
   
   private itemsSubject = new BehaviorSubject<any[]>([]);
-  items$ = this.itemsSubject.asObservable();
+  
+  items$:Observable<any> = this.itemsSubject.asObservable();
 
   constructor() { 
     let existingCartItems = JSON.parse(localStorage.getItem('produits')|| '[]');
@@ -19,9 +21,10 @@ export class PanierService {
     this.itemsSubject.next(existingCartItems);
   }
 
-getItemsSubject(){
-  return this.itemsSubject;
-}
+// getItemsSubject(){
+//   return this.itemsSubject;
+// }
+
   addToCart(product: any) {
     this.items$.pipe(
       take(1),
@@ -33,34 +36,34 @@ getItemsSubject(){
   }
 
   
-  addToCartt(product: any, toDo:string):void {
-    let index = 0
-    let found = false;
-    this.items$.pipe(
-      take(1),
-      map((products) => {
+  // addToCartt(product: any, toDo:string):void {
+  //   let index = 0
+  //   let found = false;
+  //   this.items$.pipe(
+  //     take(1),
+  //     map((products) => {
 
-        products.forEach((prod, i) => {
-          if (prod.id === product.id) {
-              found = true
-              index =i
-          }
-         })
-          if (found) {
-            if (toDo === "add") {
-              product.qte++
-            }
-            products[index]=product;
-          }else{
+  //       products.forEach((prod, i) => {
+  //         if (prod.id === product.id) {
+  //             found = true
+  //             index =i
+  //         }
+  // //        })
+  //         if (found) {
+  //           if (toDo === "add") {
+  //             product.qte++
+  //           }
+  //           products[index]=product;
+  //         }else{
 
-            product.qte = 1
-            products.push(product)
-          }
-        this.itemsSubject.next(products);
-        localStorage.setItem('products', JSON.stringify(products));
-      }),
-    ).subscribe();
-  }
+  //           product.qte = 1
+  //           products.push(product)
+  //         }
+  //       this.itemsSubject.next(products);
+  //       localStorage.setItem('products', JSON.stringify(products));
+  //     }),
+  //   ).subscribe();
+  // }
 
 removeCartItem(product: any){
     this.items$.pipe(

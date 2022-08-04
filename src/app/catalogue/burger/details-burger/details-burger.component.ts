@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogueService } from 'src/app/service/catalogue.service';
 import { PanierService } from 'src/app/service/panier.service';
-import { Burger } from 'src/models/Produits.model';
+import { Burger, Menu } from 'src/models/Produits.model';
 
 @Component({
   selector: 'app-details-burger',
@@ -12,7 +12,8 @@ import { Burger } from 'src/models/Produits.model';
 })
 export class DetailsBurgerComponent implements OnInit {
   product!:Burger;
-
+  menus!:Menu[];
+  burgers!:Burger[];
   constructor(private r:ActivatedRoute,private cataServ:CatalogueService,
     private router:Router,private sanitizer:DomSanitizer,private panierService:PanierService) { }
 
@@ -21,6 +22,14 @@ export class DetailsBurgerComponent implements OnInit {
     this.cataServ.findBurger(idProduit).subscribe(data => {
       this.product=data;     
     });
+    this.cataServ.getCatalogue().subscribe(
+      response=>{
+        this.burgers=response.burgers;
+        this.burgers=this.burgers.splice(this.burgers.indexOf(this.product));
+        console.log(this.burgers);
+        // console.log(this.menus);
+      }
+      );
   }
   
   transform(params: string){

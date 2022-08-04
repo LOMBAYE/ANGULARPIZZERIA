@@ -1,0 +1,22 @@
+<div class="row m-3">
+    <h5 class="card-title" id="title">NOS COMPLEMENTS :</h5>
+    <div class="col-sm-3 mb-4 mt-3" *ngFor="let frite of frites">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title" id="title">{{frite.portions}} </h5>
+                <img class="img-fluid" [src]="transform(frite.image)" alt="Card image cap">
+                <h5 class="btn btn-sm disabled btn-primary m-lg-2">{{frite.prix}} F</h5>
+                <button class="btn btn-sm  btn-outline-primary float-right">FRITE</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 mb-4 mt-3" *ngFor="let boissonT of boissonsT">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title" id="title">{{boissonT.boisson.nom}} </h5>
+                <img class="img-fluid" [src]="transform(boissonT.image)" alt="Card image cap">
+                <h5 class="btn btn-sm disabled btn-outline-primary m-lg-2 text-center">{{boissonT.taille.libelle}} </h5>
+            </div>
+        </div>
+    </div>
+</div>

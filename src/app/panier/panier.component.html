@@ -1,63 +1,61 @@
-<section class="container">
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col">
-                <p><span class="h2">Shopping Cart </span><span class="h4">({{(items$ | async).length}} items in your cart)</span></p>
-                <div class="scroll">
-                    <app-shop-list *ngFor="let item of items$ |async" [item]="item"></app-shop-list>
-                </div>
-                <br>
-                <br>
-                <div class="card mb-5">
-                    <div class="card-body p-4">
-                        <div class="float-end">
-                            <p class="mb-0 me-5 d-flex align-items-center">
-                                <span class="small text-muted me-2">Total Amount:</span> <span class="lead fw-normal">9000 F</span>
-                            </p>
-                        </div>
-
+<form #products="ngForm">
+    <section class="container">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <p><span class="h2">Shopping Cart </span><span class="h4">({{(items$ | async).length}} items in your cart)</span></p>
+                    <div class="scroll">
+                        <app-shop-list *ngFor="let item of items$ |async" [item]="item"></app-shop-list>
                     </div>
-                </div>
-                CHOISIR LE MODE DE RECEPTION
-                <form #test="ngForm">
+                    <br>
+                    <br>
+                    <div class="card mb-5">
+                        <div class="card-body p-4">
+                            <div class="float-end">
+                                <p class="mb-0 me-5 d-flex align-items-center">
+                                    <span class="small text-muted me-2">Total Amount:</span> <span class="lead fw-normal">9000 F</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    CHOISIR LE MODE DE RECEPTION
+
                     <div class="form-check mt-2">
                         <input class="form-check-input" type="radio" value="true" (click)="setradio('true')" [(ngModel)]="choice" name="modeReception" id="surPlace" NgModel>
                         <label class="form-check-label" for="surPlace"> SUR PLACE </label>
                     </div>
                     <div class="form-check mt-2">
-                        <input class="form-check-input" type="radio" value="false" (click)="setradio('false')" [(ngModel)]="choice" name="modeReceptionzone2" NgModel>
-                        <label class="form-check-label" for="aLivrer"> A LIVRER</label>
+                        <input class="form-check-input" type="radio" value="false" (click)="setradio('false')" [(ngModel)]="choice" name="modeReception" NgModel>
+                        <label class="form-check-label" for="aLivrer"> A LIVRER (Si a livrer indiquez la zone de livraison)</label>
                     </div>
-                </form>
-                <div class="d-flex justify-content-end">
-                    <a routerLink="/catalogue">
-                        <button type="button" class="btn btn-light btn-outline-primary btn-lg me-2">Continue shopping</button>
-                    </a>
-                    <input type="button" class="btn btn-primary btn-lg" value="PURCHASE" [disabled]="isSelected('false') || zoneChecked('false')">
-                </div>
+                    <div class="d-flex justify-content-end">
+                        <a routerLink="/catalogue">
+                            <button type="button" class="btn btn-light btn-outline-primary btn-lg me-2">Continue shopping</button>
+                        </a>
+                        <a routerLink="/catalogue">
+                            <input type="button" class="btn btn-primary btn-lg" value="PURCHASE" (click)="purchase(items$)" [disabled]="isSelected('false') || zoneChecked('false')">
+                        </a>
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<div class="" *ngIf="isSelected('false')"> ZONES DE LIVRAISON
-    <form #try="ngForm">
+    </section>
+    <div class="" *ngIf="isSelected('false') || zoneChecked('false')"> ZONES DE LIVRAISON
         <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" value="zone1" (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone1" NgModel>
+            <input class="form-check-input" type="radio" value=1 (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone1" NgModel>
             <label class="form-check-label" for="zone1"> ZONE 1  (GT2 - MANKOO- DIAPO)</label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" value="zone2" (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone2" NgModel>
+            <input class="form-check-input" type="radio" value=2 (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone2" NgModel>
             <label class="form-check-label" for="zone2"> ZONE 2 (NOTAIRE -DIAMONO - CITE)</label>
         </div>
         <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" value="zone3" (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone3" NgModel>
-            <label class="form-check-label" for="zone3"> ZONE 3 (HAMO - SENTENAC -LITTORAL)</label>
+            <input class="form-check-input" type="radio" value=3 (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone3" NgModel>
+            <label class="form-check-label" for="zone3"> ZONE 3 (LAS - FITH MITH -GOLF)</label>
         </div>
-        <div class="form-check mt-2">
-            <input class="form-check-input" type="radio" value="zone4" (click)="setradio('true')" [(ngModel)]="zone" name="zone" id="zone4" NgModel>
-            <label class="form-check-label" for="zone4"> ZONE 4 (LAS - FITH MITH - DEGGO)</label>
-        </div>
-        <h5 class="title text-center"> ZONE CHOISIE: {{zone}}</h5>
-    </form>
-</div>
+    </div>
+</form>
+<hr>
+<app-complements></app-complements>

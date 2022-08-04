@@ -22,6 +22,9 @@ import { BurgerComponent } from './catalogue/burger/burger.component';
 import { MenuComponent } from './catalogue/menu/menu.component';
 import { DetailsMenuComponent } from './catalogue/menu/details-menu/details-menu.component';
 import { DetailsBurgerComponent } from './catalogue/burger/details-burger/details-burger.component';
+import { CommandesComponent } from './commandes/commandes.component';
+import { ClientComponent } from './commandes/client/client.component';
+import { ComplementsComponent } from './complements/complements.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { DetailsBurgerComponent } from './catalogue/burger/details-burger/detail
     MenuComponent,
     DetailsMenuComponent,
     DetailsBurgerComponent,
+    CommandesComponent,
+    ClientComponent,
+    ComplementsComponent,
   ],
   imports: [
     BrowserModule,

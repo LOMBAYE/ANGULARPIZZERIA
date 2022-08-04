@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit {
   constructor(private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
+    
   }
 
   transform(params: string){

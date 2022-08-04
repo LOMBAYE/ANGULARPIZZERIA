@@ -29,6 +29,8 @@ export class CatalogueService implements OnInit{
 
  cata_url="http://127.0.0.1:8000/api/catalogues"
  menu_url="http://127.0.0.1:8000/api/menus/"
+ men_url="http://127.0.0.1:8000/api/menus"
+
  burger_url="http://127.0.0.1:8000/api/burgers/"
  produit_url="http://127.0.0.1:8000/api/produits/"
  
@@ -39,16 +41,22 @@ export class CatalogueService implements OnInit{
  findProduit(id:number):Observable<Burger|Menu>{
   return this.http.get<Burger|Menu>(this.produit_url+id);
  }
- 
+
  findMenu(id:number):Observable<Menu>{
   return this.http.get<Menu>("http://127.0.0.1:8000/api/menus/"+id);
  }
 
-
+// tab:Menu[]=[]
+// getMenuTab():{
+//   this.
+// }
  findBurger(id:number):Observable<Burger>{
   return this.http.get<Burger>(this.burger_url+id);
  }
 
+getMenu():Observable<any>{
+  return this.http.get<any>(this.men_url)
+}
 
   // url=environment.baseUrl+'catalogues'; 
   // url=environment.baseUrl; 

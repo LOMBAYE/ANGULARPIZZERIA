@@ -6,6 +6,7 @@ import { DetailsBurgerComponent } from './catalogue/burger/details-burger/detail
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { DetailsMenuComponent } from './catalogue/menu/details-menu/details-menu.component';
 import { DetailsComponent } from './catalogue/produits/details/details.component';
+import { ClientComponent } from './commandes/client/client.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PanierComponent } from './panier/panier.component';
 
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: 'panier', component:PanierComponent},
 
   {path: 'signup', component:AuthentifyComponent},
+  {path: 'client/:id', component:ClientComponent},
+
 
   {path: 'notFound',component:NotFoundComponent},
   {path: '**', redirectTo:'/notFound'},

@@ -12,7 +12,7 @@ import { Burger, Menu } from 'src/models/Produits.model';
 export class DetailsComponent implements OnInit {
   product!:any;
   constructor(private r:ActivatedRoute,private cataServ:CatalogueService,
-    private router:Router,private sanitizer:DomSanitizer) { }
+    private router:Router) { }
 
   ngOnInit(): void {
     // snapshot.params pour recuperer l id du bien
@@ -26,8 +26,6 @@ export class DetailsComponent implements OnInit {
       this.router.navigate(['/','catalogue'])
     }
   }
-  transform(params: string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
-  }
+ 
 
 }

@@ -1,5 +1,5 @@
 .scroll {
-    overflow: scroll;
+    overflow: auto;
     width: 75%;
     height: 500px;
 }
