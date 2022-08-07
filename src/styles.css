@@ -70,12 +70,14 @@
     color: white;
 }
 
-#navbarUn {
+
+/* #mylogo {
     height: auto;
+    margin-right: 50%;
     color: #502314;
     background-image: url(assets/images/logo.png);
     background-size: cover;
-}
+} */
 
 #search {
     margin-left: 95%;

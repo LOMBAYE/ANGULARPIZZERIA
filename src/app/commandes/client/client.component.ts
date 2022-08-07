@@ -19,8 +19,16 @@ commandes!:Commande[]
       res =>{
         this.commandesDunClient = res;
         this.commandes = this.commandesDunClient.commandes;
+        console.log(this.commandes[0].modeReception);
         
     })
   }
+  modeRec(bool:boolean):string{
+    if(bool){
+      return 'Sur Place';
+    }
+    return 'Par livraison';
+  }
+
 
 }

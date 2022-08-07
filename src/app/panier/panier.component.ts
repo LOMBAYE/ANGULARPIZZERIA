@@ -20,16 +20,22 @@ export class PanierComponent implements OnInit {
   constructor(private panierService: PanierService, private http:HttpClient) { }
 
   totalPrice: number = 0;
-  ngOnInit(): void {
-  }
 
   items$=this.panierService.items$;
+  ngOnInit(): void {
+
+  }
+
    
   purchase(tab:Observable<any[]>){
+    // console.log(tab); 
+    this.http.post<any>(this.command_url, {modeReception:true,Produits:[{   "quantite": 6,
+    "produit": "/api/burgers/1"}],"client":"/api/clients/2","zone":"/api/zones/1"}).subscribe(data => {
+      // this.postId = data.id;
+  })
     tab.forEach(element => {
   this.panierService.removeCartItem(element);
   })
-// alert('a ajouter a la base');
   }     
 
   choix(str:string):boolean{
@@ -69,11 +75,13 @@ export class PanierComponent implements OnInit {
       return (this.selectedZone===zone)
     }
     
-    commander(products:{modeReception:boolean,tab:ligneDeCom[],idClient:number,zone?:number}){
+    commander(){
+      // products={modeReception:true,Produits:{},client:"/api/clients/1",zone:"/api/clients/1"}
       //  // Simple POST request with a JSON body and response type <any>
-      this.http.post<any>(this.command_url, { title: 'Angular POST Request Example' }).subscribe(data => {
+      // this.http.post<any>(this.command_url, { title: 'Angular POST Request Example' }).subscribe(data => {
+      this.http.post<any>(this.command_url, {modeReception:true,Produits:{},client:"/api/clients/1",zone:"/api/clients/1"}).subscribe(data => {
         // this.postId = data.id;
     })
-      console.log(products);
+      // console.log(products);
     }
 }

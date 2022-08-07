@@ -1,19 +1,12 @@
-<!--<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <th>Nom</th>
-        <th>Prix</th>
-    </tr>
-    <tr *ngFor="let result of tab">
-        <td>{{result.nom}}</td>
-        <td class="text-danger">{{result.prix}}</td>
-    </tr>
-</table>-->
-<!--<input type="text" [(ngModel)]="search">-->
-
 <h5 class="card-title text-center mt-2" id="title">You can't build peace on empty stomachs</h5>
+<div class="input-group">
+    <div class="form-outline">
+        <input type="text" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search" NgModel />
+    </div>
+</div>
 <div class="row m-3">
     <ng-container>
-        <app-burger *ngFor="let burger of burgers" class="col-sm-3 mb-4 mt-3" [produitRecu]="burger"></app-burger>
+        <app-burger *ngFor="let burger of burgers |price:search" class="col-sm-3 mb-4 mt-3" [produitRecu]="burger"></app-burger>
     </ng-container>
     <br>
     <br>
@@ -21,6 +14,6 @@
     <h5 class="card-title text-center mt-2" id="title">Starving ? Taste our menus </h5>
     <br>
     <ng-container>
-        <app-menu *ngFor="let menu of menus" class="col-sm-3 mb-4 mt-3" [produitRecu]="menu"></app-menu>
+        <app-menu *ngFor="let menu of menus |price:search" class="col-sm-3 mb-4 mt-3" [produitRecu]="menu"></app-menu>
     </ng-container>
 </div>

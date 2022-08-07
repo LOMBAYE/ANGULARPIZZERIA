@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { map,take } from 'rxjs/operators';
+import { Menu } from 'src/models/Produits.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,36 +36,6 @@ export class PanierService {
     ).subscribe();
   }
 
-  
-  // addToCartt(product: any, toDo:string):void {
-  //   let index = 0
-  //   let found = false;
-  //   this.items$.pipe(
-  //     take(1),
-  //     map((products) => {
-
-  //       products.forEach((prod, i) => {
-  //         if (prod.id === product.id) {
-  //             found = true
-  //             index =i
-  //         }
-  // //        })
-  //         if (found) {
-  //           if (toDo === "add") {
-  //             product.qte++
-  //           }
-  //           products[index]=product;
-  //         }else{
-
-  //           product.qte = 1
-  //           products.push(product)
-  //         }
-  //       this.itemsSubject.next(products);
-  //       localStorage.setItem('products', JSON.stringify(products));
-  //     }),
-  //   ).subscribe();
-  // }
-
 removeCartItem(product: any){
     this.items$.pipe(
       take(1),
@@ -75,9 +46,31 @@ removeCartItem(product: any){
       }),
     ).subscribe();
 }
- 
-// itemInCart(item): boolean {
-//   return this.items$.findIndex(o => o.id === item.id) > -1;
-// }
+ addToCartt(product: any):void {
+    let index = 0
+    let found = false;
+    this.items$.pipe(
+      take(1),
+      map((products:any[]) => {
+
+        products.forEach((prod, i) => {
+          if (prod.id === product.id) {
+              found = true
+              index =i
+          }
+         })
+          if (found) {
+              product.qte++
+            products[index]=product;
+          }else{
+
+            product.qte = 1
+            products.push(product)
+          }
+        this.itemsSubject.next(products);
+        localStorage.setItem('products', JSON.stringify(products));
+      }),
+    ).subscribe();
+  }
 }
 

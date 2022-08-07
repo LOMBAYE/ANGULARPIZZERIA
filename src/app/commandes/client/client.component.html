@@ -1,21 +1,23 @@
+<h5>List of my orders: {{commandesDunClient.nomComplet}}</h5>
 <table class="table caption-top">
-    <caption>List of my orders: {{commandesDunClient.nomComplet}}</caption>
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
             <th scope="col">Num° Commande</th>
             <th scope="col">Etat</th>
-            <th scope="col">AAA</th>
+            <th scope="col">Mode de reception</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let order of commandes">
-            <th scope="row">1</th>
+        <tr *ngFor="let order of commandes,let i= index">
+            <th scope="row">{{i+1}}</th>
             <td>{{order.date}}</td>
             <td>{{order.numero}}</td>
             <td>{{order.isEtat}}</td>
-            <td>@mdo</td>
+            <td>{{modeRec(order.modeReception)}}</td>
         </tr>
     </tbody>
 </table>
+<br>
+<br>

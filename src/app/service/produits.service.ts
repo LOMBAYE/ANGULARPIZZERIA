@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Burger, Taille } from 'src/models/Produits.model';
+import { Burger, Menu, Taille } from 'src/models/Produits.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,10 @@ export class ProduitsService {
    findTaille(id:number):Observable<Taille>{
     return this.http.get<Taille>("http://127.0.0.1:8000/api/tailles/"+id)
    }
+
+  //  tab!:[];
+  //  similarProducts(id:number){
+  //   this.tab=this.http.get<any>("http://127.0.0.1:8000/api/boissons")
+  //  }
 
 }

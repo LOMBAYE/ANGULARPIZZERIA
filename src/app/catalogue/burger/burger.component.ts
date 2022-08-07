@@ -17,7 +17,7 @@ export class BurgerComponent implements OnInit {
    
   }
   ajouterAuPanier(produit:Burger){
-      this.panierService.addToCart(produit);
+      this.panierService.addToCartt(produit);
   }
   transform(params: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);

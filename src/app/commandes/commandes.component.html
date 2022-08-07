@@ -1,1 +1,29 @@
-<p>commandes works!</p>
+<div class="container mt-5">
+
+    <table class="table table-bordeless">
+        <tr class="bg-primary mt-bordered">
+            <th>#</th>
+            <th>n° Commande</th>
+            <th>Nom Client</th>
+            <th>N° Tel</th>
+            <th>Etat</th>
+            <th>Prix</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <tr *ngFor="let commande of commandes,let i= index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td>{{commande.numero}}</td>
+            <td class="font-weight-bold">{{commande.client.nomComplet}}</td>
+            <td>{{commande.client.telephone}}</td>
+            <td>{{commande.isEtat}}</td>
+            <td>{{commande.prix}}</td>
+            <td class="text-center">
+                <button class="btn btn-warning text-dark"> Livrer</button>
+                <button [disabled]="cancelled(commande)" class="btn  btn-danger text-dark"><a (click)="cancelCommand(commande.id)">Annuler</a></button>
+                <button class="btn btn-outline-primary btn-sm "><a [routerLink]="['/commandes',commande.id]" >Details</a></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br>

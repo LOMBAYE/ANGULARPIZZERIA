@@ -9,6 +9,7 @@ import { PanierService } from '../service/panier.service';
 })
 export class HeaderComponent implements OnInit {
 
+
   constructor(private panierService: PanierService) { }
   
   items$?:Observable<any>=this.panierService.items$;

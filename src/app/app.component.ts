@@ -7,7 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
+
   title = 'brasilBurger';
+  research: string="test";
+
   constructor(private sanitizer:DomSanitizer){
 
   }

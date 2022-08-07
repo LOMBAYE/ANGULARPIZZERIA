@@ -52,17 +52,20 @@ export interface Catalogue{
     burgers:Burger[]
 }
 export interface ligneDeCom{
-    qte:number,
+    quantite:number,
     prix:number,
     produit:Burger |Menu
 }
 
 export interface Commande{
     id: number,
-    isEtat:boolean,
+    isEtat:string,
     numero:string,
     modeReception:boolean,
-    date:Date
+    date:Date,
+    client:User,
+    prix:number,
+    Produits:ligneDeCom[]
 }
 export interface CommandeDunClient{
     telephone:string,
@@ -74,4 +77,9 @@ export interface CommandeDunClient{
 export interface Complement{
     boissonsT:BoissonT[],
     frites:Frites[]
+}
+export interface User{
+    nomComplet:string,
+    email:string,
+    telephone:string,
 }

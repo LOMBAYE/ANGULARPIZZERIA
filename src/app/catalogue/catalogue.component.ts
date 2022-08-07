@@ -11,24 +11,17 @@ import { PanierService } from '../service/panier.service';
 })
 export class CatalogueComponent implements OnInit {
 
-  // search:string="filter";
+  search:string="";
 
   constructor(private cataServ:CatalogueService,private domSan:DomSanitizer ) { }
 
   products:Menu[] |Burger[]=[];
-  // tab:Catalogue={ menus:[],burgers:[]}; 
-  
-  // produits:Menu[]|Burger[] = [];
+
 catalogue!:Catalogue
 menus!:Menu[];
 burgers!:Burger[];
   ngOnInit(): void {
-    //  const imgPath=this.domSan.bypassSecurityTrustResourceUrl()
-    // this.cataServ.getAllProducts().subscribe(
-    //   response=>{
-    //     // console.log(response);
-    //     this.products = response}
-    //   );
+
       this.cataServ.getCatalogue().subscribe(
         response=>{
           this.burgers=response.burgers;
@@ -37,11 +30,6 @@ burgers!:Burger[];
         }
         );
         
-
-      
-    // this.tab = this.cataServ.getCatalogue();
-    
-    // this.produits=this.tab.burgers.concat(this.tab.menus);
   }
 
 }

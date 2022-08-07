@@ -2,7 +2,7 @@
     <h3 class="card-title text-center mt-2" id="title">DETAILS :</h3>
     <div class="col">
         <div class="card float-center" style="width: 18rem;">
-            <div class="card-body ">
+            <div class="card-body">
                 <!--Property binding {{}}, event binding [a]={}-->
                 <h5 class="card-title">{{product.nom}}</h5>
                 <img class="card-img-top" [src]="transform(product.image)" alt="Card image cap">
@@ -18,6 +18,12 @@
     <br>
     <div class="row">
         <div class="col-md-3 m-3" *ngFor="let boissonT of boissonsT">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>{{boissonT.quantite}} {{boissonT.taille.libelle}} TO CHOOSE</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             <div class="row">
                 <span class="card text-center mt-2">{{boissonT.quantite}} {{boissonT.taille.libelle}} TO CHOOSE</span>
             </div>
@@ -26,13 +32,29 @@
                     <h5>{{boisson.nom}}</h5>
                     <img [src]="transform(boisson.image)" alt="#" class="img-fluid">
                     <!--<button type="button" class="btn btn-primary" (click)="increase(drink)">+</button>-->
-                    <input type="number" min=0 value=0 id="{{boisson.id}}" (change)="a()">
+                    <input #ab type="number" min=0 value=0 id="{{boisson.id}}" (change)="a(ab,boissonsT)" style="width:50px;margin-left:40%;margin-top:5px;">
                     <!--<button type="button" class="btn btn-light" (click)="decrease(drink)">-</button>-->
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <hr>
     <app-complements></app-complements>
     <hr>
     <h5 class="card-title text-center">Menus Similaires</h5>
+    <div class="container-fluid">
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+
+            <div class="col-5" *ngFor="let menu of menus">
+                <div class="card card-block card-1 d-flex">
+                    <h5 class="card-title" id="title">{{menu.nom}}</h5>
+                    <a class="cat" [routerLink]="['/menu',menu.id]">
+                        <img class="img-fluid" [src]="transform(menu.image)" alt="Card image cap">
+                    </a>
+                    <button class="btn btn-sm  btn-outline-primary m-lg-2 " [routerLink]="['/menu',menu.id]">{{menu.prix}} F</button>
+                </div>
+            </div>
+        </div>
+    </div>

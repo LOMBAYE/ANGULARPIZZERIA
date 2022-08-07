@@ -25,6 +25,11 @@ import { DetailsBurgerComponent } from './catalogue/burger/details-burger/detail
 import { CommandesComponent } from './commandes/commandes.component';
 import { ClientComponent } from './commandes/client/client.component';
 import { ComplementsComponent } from './complements/complements.component';
+import { BoissonTComponent } from './catalogue/menu/details-menu/boisson-t/boisson-t.component';
+import { DetailsCommandeComponent } from './commandes/details-commande/details-commande.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { PricePipe } from './pipes/price.pipe';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +54,10 @@ import { ComplementsComponent } from './complements/complements.component';
     CommandesComponent,
     ClientComponent,
     ComplementsComponent,
+    BoissonTComponent,
+    DetailsCommandeComponent,
+    SearchPipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,

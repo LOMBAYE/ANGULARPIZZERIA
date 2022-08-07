@@ -13,41 +13,45 @@ import { Boissons, BoissonT, Menu, Taille } from 'src/models/Produits.model';
 })
 export class DetailsMenuComponent implements OnInit {
   product!:Menu;
+  menus!:Menu[];
   tailles!:Taille[];
 boissons!:Boissons[];
 boissonsT!:BoissonT[];
 nbr:number=0
 
+quantite!:number;
   constructor(private r:ActivatedRoute,private cataServ:CatalogueService,
     private router:Router,private sanitizer:DomSanitizer,
     private prodServ:ProduitsService,private panierService:PanierService) { }
 
   ngOnInit(): void {
-    let idProduit = +this.r.snapshot.params['id'];
-    this.cataServ.findMenu(idProduit).subscribe(
-      menu=>{
-        this.product=menu 
-      this.boissonsT=menu.tailles
-      // this.boissonsT.forEach(boissonT=>{
-      //   // console.log(boissonT.taille);
-      // })
-        console.log(menu.tailles);
-        // console.log(this.product.tailles);            
-      })     
-      // this.prodServ.findTaille(3).subscribe(
-      //   response=>{
-      //     this.boissons= response.boissonTailles;
-      //     console.log(this.boissons);
-      //   }
-      // )
+    this.r.params.subscribe(
+      data=>{
+      let idProduit = +this.r.snapshot.params['id'];
+      this.cataServ.findMenu(idProduit).subscribe(
+        menu=>{
+          this.product=menu 
+        this.boissonsT=menu.tailles
+        this.boissonsT.forEach(boissonT=>{
+          this.quantite=boissonT.quantite;
+          // console.log(this.quantite);
+        })
+   console.log(this.product.tailles);            
+        })     
+   
+        this.prodServ.findAllBoissons(idProduit).subscribe(
+          res=>{
+           this.boissons=res;
+          //  console.log(res);    
+          }
+        )
+        this.cataServ.getCatalogue().subscribe(
+          response=>{
+            this.menus=response.menus;
+          }
+          );
+        } )
   
- 
-      this.prodServ.findAllBoissons(idProduit).subscribe(
-        res=>{
-         this.boissons=res;
-        //  console.log(res);    
-        }
-      )
    
   }
 
@@ -76,11 +80,16 @@ etat!:boolean
     }
   }
 
-  a(){
-    console.log(this.inputValues());
-  if(10<this.inputValues())
+  a(input:any,tab:BoissonT[]){
+    // console.log(input.parentElement.parentElement.previousSibling.innerText);
+  tab.forEach(
+    item=>{
+      if(item.quantite<this.inputValues())
 
-    alert('gggg');
+      alert('gggg');
+    }
+    )  
+
   }
   
   decrease(input:any){
