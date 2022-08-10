@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CommandeService } from 'src/app/service/commande.service';
 import { Commande, CommandeDunClient } from 'src/models/Produits.model';
@@ -11,7 +12,7 @@ export class ClientComponent implements OnInit {
 commandesDunClient!:CommandeDunClient
 commandes!:Commande[]
 
-  constructor(private comServ:CommandeService) { }
+  constructor(private comServ:CommandeService,private http:HttpClient) { }
 
   ngOnInit(): void {
 
@@ -19,8 +20,6 @@ commandes!:Commande[]
       res =>{
         this.commandesDunClient = res;
         this.commandes = this.commandesDunClient.commandes;
-        console.log(this.commandes[0].modeReception);
-        
     })
   }
   modeRec(bool:boolean):string{
@@ -30,5 +29,16 @@ commandes!:Commande[]
     return 'Par livraison';
   }
 
-
+  cancelCommand(id:number){
+    this.http.put<any>("http://127.0.0.1:8000/api/commandes/"+id, { 'isEtat': 'annulee' }).subscribe(data => {
+  })}
+  
+  // cancelled=true;
+  
+  cancelled(command:Commande):boolean{
+    if(command.isEtat=='annulée'){
+      return true
+    }
+    return false
+  }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { map,take } from 'rxjs/operators';
-import { Menu } from 'src/models/Produits.model';
+import { Burger, Menu } from 'src/models/Produits.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Menu } from 'src/models/Produits.model';
 export class PanierService {
   
   
-  private itemsSubject = new BehaviorSubject<any[]>([]);
+  private itemsSubject = new BehaviorSubject<Menu[] |Burger[]>([]);
   
   items$:Observable<any> = this.itemsSubject.asObservable();
 
@@ -21,10 +21,6 @@ export class PanierService {
     }
     this.itemsSubject.next(existingCartItems);
   }
-
-// getItemsSubject(){
-//   return this.itemsSubject;
-// }
 
   addToCart(product: any) {
     this.items$.pipe(
@@ -45,6 +41,9 @@ removeCartItem(product: any){
         localStorage.setItem('products', JSON.stringify(products));
       }),
     ).subscribe();
+}
+getPanier(){
+  return this.items$;
 }
  addToCartt(product: any):void {
     let index = 0

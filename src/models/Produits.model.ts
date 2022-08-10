@@ -5,7 +5,6 @@ export interface Burger{
     prix:number,
     qte?:number,
     type?:string,
-    isInPanier?:boolean
 }
 export interface Frites{
     id: number,
@@ -14,7 +13,6 @@ export interface Frites{
     prix:number,
     portions:string,
     qte?:number,
-    type?:string
 }
 export interface Boissons{
     id: number,
@@ -22,7 +20,7 @@ export interface Boissons{
     image:string,
     prix:number,
     qte?:number,
-    type?:string
+    idBoisson:number,
 }
 export interface BoissonT{
     id: number,

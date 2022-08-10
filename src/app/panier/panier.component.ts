@@ -20,22 +20,42 @@ export class PanierComponent implements OnInit {
   constructor(private panierService: PanierService, private http:HttpClient) { }
 
   totalPrice: number = 0;
-
+paniers:{}[]=[]
   items$=this.panierService.items$;
   ngOnInit(): void {
-
+    console.log(this.commandFormat());  
+    this.items$.subscribe(data=>{});
   }
 
+items!:Burger[] | Menu[]
+
+commandFormat(){
+ this.panierService.getPanier().subscribe(data=>{this.items=data});
+
+ this.items.forEach(
+    item =>{
+      this.paniers.push(
+          {
+            "quantite": item.qte,
+            "produit":"/api/produits/"+item.id
+          }
+      )
+    }
+  )
+  return this.paniers
+}
    
   purchase(tab:Observable<any[]>){
-    // console.log(tab); 
-    this.http.post<any>(this.command_url, {modeReception:true,Produits:[{   "quantite": 6,
-    "produit": "/api/burgers/1"}],"client":"/api/clients/2","zone":"/api/zones/1"}).subscribe(data => {
-      // this.postId = data.id;
-  })
-    tab.forEach(element => {
-  this.panierService.removeCartItem(element);
-  })
+
+  this.http.post<any>(this.command_url,
+    {
+      "Produits":this.commandFormat(),
+      "client":"/api/clients/2",
+      "modeReception":false,
+      "zone":"/api/zones/1"
+    }).subscribe(data => {});
+
+    tab.forEach(element => {this.panierService.removeCartItem(element)})
   }     
 
   choix(str:string):boolean{
@@ -74,14 +94,5 @@ export class PanierComponent implements OnInit {
       }
       return (this.selectedZone===zone)
     }
-    
-    commander(){
-      // products={modeReception:true,Produits:{},client:"/api/clients/1",zone:"/api/clients/1"}
-      //  // Simple POST request with a JSON body and response type <any>
-      // this.http.post<any>(this.command_url, { title: 'Angular POST Request Example' }).subscribe(data => {
-      this.http.post<any>(this.command_url, {modeReception:true,Produits:{},client:"/api/clients/1",zone:"/api/clients/1"}).subscribe(data => {
-        // this.postId = data.id;
-    })
-      // console.log(products);
-    }
+
 }

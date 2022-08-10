@@ -1,0 +1,8 @@
+<h5>{{boisson.nom}}</h5>
+<img [src]="transform(boisson.image)" alt="#" class="img-fluid">
+<div style="text-align: center;margin-top: 10px;">
+    <button type="button" (click)="update(-1)" class="btn btn-primary">-</button>
+    <span>{{qte}}</span>
+    <!--<input type="number" min=0 value=0 id="{{boisson.id}}">-->
+    <button type="button" (click)="update(+1)" class="btn btn-light">+</button>
+</div>

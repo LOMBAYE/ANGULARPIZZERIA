@@ -13,10 +13,27 @@ export class CommandeService {
   commandesDunClient(id:number):Observable<CommandeDunClient>{
     return this.http.get<CommandeDunClient>("http://127.0.0.1:8000/api/clients/"+id);
   }
-  commandes():Observable<any>{
-    return this.http.get<any>("http://127.0.0.1:8000/api/commandes");
+  commandes():Observable<Commande[]>{
+    return this.http.get<Commande[]>("http://127.0.0.1:8000/api/commandes");
   }
   oneCommande(id:number):Observable<Commande>{
     return this.http.get<any>("http://127.0.0.1:8000/api/commandes/"+id);  
   }
+
+  splitDate(date:string):string{
+    return date.split("T")[0]
+  }
+
+  nowDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+    return [year, month, day].join('-');
+}
+  tabCom:{group:string}[]=[]
 }

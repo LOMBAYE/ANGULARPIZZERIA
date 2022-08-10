@@ -29,8 +29,6 @@ const routes: Routes = [
   {path: 'commandes/:id', component:DetailsCommandeComponent},
 
 
-
-
   {path: 'notFound',component:NotFoundComponent},
   {path: '**', redirectTo:'/notFound'},
 

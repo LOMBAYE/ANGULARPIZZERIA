@@ -19,7 +19,6 @@ boissons!:Boissons[];
 boissonsT!:BoissonT[];
 nbr:number=0
 
-quantite!:number;
   constructor(private r:ActivatedRoute,private cataServ:CatalogueService,
     private router:Router,private sanitizer:DomSanitizer,
     private prodServ:ProduitsService,private panierService:PanierService) { }
@@ -32,81 +31,86 @@ quantite!:number;
         menu=>{
           this.product=menu 
         this.boissonsT=menu.tailles
-        this.boissonsT.forEach(boissonT=>{
-          this.quantite=boissonT.quantite;
-          // console.log(this.quantite);
-        })
-   console.log(this.product.tailles);            
+        // console.log(this.boissonsT);
+        
+              this.boissonsT.forEach(e=>{
+                // console.log(e.id);
+            this.prodServ.tabQteBoisson[e.id]={qteBoisson:e.quantite,somQte:0};
+            this.prodServ.findAllBoissons(idProduit).subscribe(
+              res=>{
+               this.boissons=res;
+               this.boissons.forEach(boisson=>{
+                boisson.idBoisson=e.id;
+               })
+              }
+            )
+           })
+            // console.log(this.prodServ.tabQteBoisson);
         })     
    
-        this.prodServ.findAllBoissons(idProduit).subscribe(
-          res=>{
-           this.boissons=res;
-          //  console.log(res);    
-          }
-        )
+        // this.prodServ.findAllBoissons(idProduit).subscribe(
+        //   res=>{
+        //    this.boissons=res;
+        //    this.boissons.forEach(boisson=>{
+        //     boisson.idBoisson=e.id;
+        //    })
+        //   }
+        // )
         this.cataServ.getCatalogue().subscribe(
           response=>{
             this.menus=response.menus;
           }
           );
-        } )
-  
-   
+        } ) 
   }
 
   transform(params: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
   }
   ajouterAuPanier(produit:Menu){
-    this.panierService.addToCart(produit);
+    this.panierService.addToCartt(produit);
 }
 
-  listen(e: string){
-    alert('ha');
-    this.nbr++
-    console.log(this.nbr);
-  }
+etat:boolean=false
 
-etat!:boolean
-  increase(input:any){
-    if(5>this.inputValues()){
-      input.value++;
-      this.etat=false;
-      console.log(this.inputValues());
-    }
-    else{
-      this.etat=true;
-    }
-  }
+  // increase(input:any){
+  //   if(5>this.inputValues()){
+  //     input.value++;
+  //     this.etat=false;
+  //     console.log(this.inputValues());
+  //   }
+  //   else{
+  //     this.etat=true;
+  //   }
+  // }
 
-  a(input:any,tab:BoissonT[]){
-    // console.log(input.parentElement.parentElement.previousSibling.innerText);
-  tab.forEach(
-    item=>{
-      if(item.quantite<this.inputValues())
+  // a(input:any,tab:BoissonT[]){
+  //   // console.log(input.parentElement.parentElement.previousSibling.innerText);
+  // tab.forEach(
+  //   item=>{
+  //     if(item.quantite<this.inputValues())
 
-      alert('gggg');
-    }
-    )  
+  //     alert('gggg');
+  //   }
+  //   )  
 
-  }
+  // }
   
-  decrease(input:any){
-    // alert('moins')
-    if(input.value>=1){
-      this.etat=false;
-      input.value--;
-    }
-  }
+  // decrease(input:any){
+  //   // alert('moins')
+  //   if(input.value>=1){
+  //     this.etat=false;
+  //     input.value--;
+  //   }
+  // }
 
-  inputValues(){
-    let som=0;
-    const inputs=document.querySelectorAll('input');
-    inputs.forEach(
-      input =>{
-        som+=+input.value;
-      } )
-      return som;
-  }
+  // inputValues(){
+  //   let som=0;
+  //   const inputs=document.querySelectorAll('input');
+  //   inputs.forEach(
+  //     input =>{
+  //       som+=+input.value;
+  //     } )
+  //     return som;
+  // }
 }

@@ -6,9 +6,11 @@
                 <!--Property binding {{}}, event binding [a]={}-->
                 <h5 class="card-title">{{product.nom}}</h5>
                 <img class="card-img-top" [src]="transform(product.image)" alt="Card image cap">
-                <i class="fas fa-shopping-cart text-primary float-end fa-2x" *ngIf="etat" title="Ajouter Au Panier" (click)="ajouterAuPanier(product)"></i>
                 <a [routerLink]="['/']" class="btn btn-sm btn-primary float-right" title="Ajouter Au Panier">BUY</a>
                 <h5 class="btn btn-sm disabled btn-outline-primary">{{product.prix}} F</h5>
+                <button class="btn float-end" [disabled]="etat">
+                    <i class="fas fa-shopping-cart text-primary float-end fa-2x" title="Ajouter Au Panier" (click)="ajouterAuPanier(product)"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -18,23 +20,11 @@
     <br>
     <div class="row">
         <div class="col-md-3 m-3" *ngFor="let boissonT of boissonsT">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>{{boissonT.quantite}} {{boissonT.taille.libelle}} TO CHOOSE</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
             <div class="row">
                 <span class="card text-center mt-2">{{boissonT.quantite}} {{boissonT.taille.libelle}} TO CHOOSE</span>
             </div>
             <div class="row">
-                <div class="custom-control custom-checkbox image-checkbox m-3" *ngFor="let boisson of boissons">
-                    <h5>{{boisson.nom}}</h5>
-                    <img [src]="transform(boisson.image)" alt="#" class="img-fluid">
-                    <!--<button type="button" class="btn btn-primary" (click)="increase(drink)">+</button>-->
-                    <input #ab type="number" min=0 value=0 id="{{boisson.id}}" (change)="a(ab,boissonsT)" style="width:50px;margin-left:40%;margin-top:5px;">
-                    <!--<button type="button" class="btn btn-light" (click)="decrease(drink)">-</button>-->
-                </div>
+                <app-boissons *ngFor="let boisson of boissons" [boisson]="boisson"></app-boissons>
             </div>
         </div>
     </div>

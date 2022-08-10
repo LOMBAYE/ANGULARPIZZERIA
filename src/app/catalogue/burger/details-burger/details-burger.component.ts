@@ -22,7 +22,7 @@ export class DetailsBurgerComponent implements OnInit {
         data =>{
           const idProduit = +this.r.snapshot.params['id'];
           this.cataServ.findBurger(idProduit).subscribe(data => {
-            this.product=data;     
+            this.product=data; 
           });
           this.cataServ.getCatalogue().subscribe(
             response=>{
@@ -36,7 +36,7 @@ export class DetailsBurgerComponent implements OnInit {
   transform(params: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, '+params);
   }
-  ajouterAuPanier(produit:any){
+  ajouterAuPanier(produit:Burger){
     this.panierService.addToCartt(produit);
 }
 

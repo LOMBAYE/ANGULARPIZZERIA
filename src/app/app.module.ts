@@ -29,6 +29,7 @@ import { BoissonTComponent } from './catalogue/menu/details-menu/boisson-t/boiss
 import { DetailsCommandeComponent } from './commandes/details-commande/details-commande.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { PricePipe } from './pipes/price.pipe';
+import { BoissonsComponent } from './catalogue/menu/details-menu/boissons/boissons.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { PricePipe } from './pipes/price.pipe';
     BoissonTComponent,
     DetailsCommandeComponent,
     SearchPipe,
-    PricePipe
+    PricePipe,
+    BoissonsComponent
   ],
   imports: [
     BrowserModule,

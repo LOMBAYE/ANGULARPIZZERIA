@@ -25,9 +25,6 @@ export class ProduitsService {
     return this.http.get<Taille>("http://127.0.0.1:8000/api/tailles/"+id)
    }
 
-  //  tab!:[];
-  //  similarProducts(id:number){
-  //   this.tab=this.http.get<any>("http://127.0.0.1:8000/api/boissons")
-  //  }
+  tabQteBoisson:{qteBoisson:number,somQte:number}[]=[]
 
 }
