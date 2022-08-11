@@ -13,19 +13,19 @@ export class CommandesComponent implements OnInit {
 commandes:Commande[]=[];
 tabs:any=[]
 index:number=1;
-search='';
-toDo='Valider'
+search!:Date;
+// toDo='Valider'
 constructor(private comServ:CommandeService,private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
     const now=this.comServ.nowDate();
         this.comServ.commandes().subscribe(
       data=>{
+        this.commandes=data;
         data.forEach(
           res=>{
-            if(this.comServ.splitDate(res.date.toString())===now){
-              this.commandes.push(res);
-            }
+            // if(this.comServ.splitDate(res.date.toString())===now){
+            //   this.commandes.push(res);
               this.tabs.push(this.comServ.splitDate(res.date.toString()))
             })
       }
@@ -41,9 +41,11 @@ changeState(id:number,toDo:string){
   if(toDo=="annulée"){
     this.http.put<any>("http://127.0.0.1:8000/api/commandes/"+id, { 'isEtat': 'annulée' }).subscribe(data => {
     })
+    location.reload();
   }else if(toDo=="validée"){
     this.http.put<any>("http://127.0.0.1:8000/api/commandes/"+id, { 'isEtat': 'validée' }).subscribe(data => {
     })
+    location.reload();
   }
 }
 

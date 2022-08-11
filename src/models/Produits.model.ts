@@ -81,3 +81,11 @@ export interface User{
     email:string,
     telephone:string,
 }
+
+export interface Zone{
+    id: number
+    nom:string,
+    commandes:Commande[],
+    coutLivraison:number,
+    quartiers:{nom:string}[]
+}

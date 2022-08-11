@@ -1,8 +1,8 @@
-<!--<div class="input-group">
+<div class="input-group">
     <div class="form-outline">
         <input type="date" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search" NgModel />
     </div>
-</div>-->
+</div>
 <select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
     <option selected>Les commandes du ---</option>
     <option value="{{tab}}" *ngFor="let tab of tabs,let i= index">{{tab}}</option>
@@ -22,17 +22,21 @@
         <tr *ngFor="let commande of commandes,let i= index" class="bg-light">
             <td>{{i +1}}</td>
             <td>{{commande.numero}}</td>
-            <td>{{ commande.date |date:"HH:mm"}}</td>
+            <td>{{ commande.date }}</td>
             <td class="font-weight-bold">{{commande.client.nomComplet}}</td>
             <td>{{commande.client.telephone}}</td>
             <td>{{commande.isEtat}}</td>
             <td class="text-center">
                 <button class="btn btn-dark text-success" *ngIf="!validated(commande)" [disabled]="cancelled(commande)" (click)="changeState(commande.id,'validée')">Valider</button>
-                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)"><a (click)="changeState(commande.id,'annulee')">Annuler</a></button>
-                <button class="btn btn-outline-primary btn-sm " [routerLink]="['/commandes',commande.id]">Details</button>
+                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulee')">Annuler</button>
+                <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/commandes',commande.id]">Details</button>
             </td>
         </tr>
     </table>
 </div>
+<br>
+<h5 class="title">Livrer pour la zone :</h5>
+<button class="btn btn-primary btn-sm m-2" *ngFor="let zone of zones" [routerLink]="['/admin/commandes/zone',zone.id]">{{zone.nom}}</button>
+<br>
 <br>
 <br>

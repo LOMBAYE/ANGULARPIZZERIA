@@ -59,7 +59,7 @@ import { BoissonsComponent } from './catalogue/menu/details-menu/boissons/boisso
     DetailsCommandeComponent,
     SearchPipe,
     PricePipe,
-    BoissonsComponent
+    BoissonsComponent,
   ],
   imports: [
     BrowserModule,

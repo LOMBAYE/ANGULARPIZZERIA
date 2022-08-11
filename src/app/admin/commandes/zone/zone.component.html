@@ -1,0 +1,32 @@
+<a routerLink="/admin">
+    <button class="btn btn-primary btn-lg">Retour a la liste</button>
+</a>
+<!--<h5 class="title text-center">Les commandes de {{commande.client.nomComplet}} :</h5>-->
+<div class="container mt-5">
+    <table class="table table-bordered table-striped">
+        <tr class="bg-primary mt-bordered text-center">
+            <th>#</th>
+            <th>Numero de la commande</th>
+            <th>Nom Client</th>
+            <th>Etat</th>
+            <th>Nbre de produits</th>
+            <th>Ajouter a la livraison</th>
+        </tr>
+        <tr *ngFor="let commande of commandes,let i= index" class="bg-light text-center">
+            <td>{{i +1}}</td>
+            <td>{{commande.numero}}</td>
+            <td>{{commande.client.nomComplet}}</td>
+            <td>{{commande.isEtat}}</td>
+            <td>{{commande.Produits.length}}</td>
+            <td>
+                <input check type="checkbox" (click)="checked(commande.id)" name="{{commande.id}}" id="{{commande.id}}" value="{{commande.id}}">
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-primary btn-lg float-end" (click)="deliver()" type="button">Livrer</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,0 +1,35 @@
+<a routerLink="/admin">
+    <input type="button" class="btn btn-primary btn-lg" value="Retour a la liste">
+</a>
+<h5 class="title text-center">Les commandes de {{commande.client.nomComplet}} :</h5>
+<div class="container mt-5">
+    <table class="table table-bordered table-striped">
+        <tr class="bg-primary mt-bordered">
+            <th>#</th>
+            <th>Date de la commande</th>
+            <th>Mode de reception</th>
+            <th>Quantite</th>
+            <th>Produit</th>
+            <th>Prix</th>
+            <!--<th class="text-center">Actions</th>-->
+        </tr>
+        <tr *ngFor="let ligne of ligneDeCom,let i= index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td>{{commande.date}}</td>
+            <td class="font-weight-bold">{{modeRec(commande.modeReception)}}</td>
+            <td>{{ligne.quantite}}</td>
+            <td>{{ligne.produit.nom}}</td>
+            <td>{{ligne.prix}}</td>
+            <!--<td class="text-center">
+                <a class="btn btn-warning text-dark">Livrer</a>
+                <a class="btn  btn-danger text-dark">Annuler</a>
+                <a class="btn btn-outline-primary btn-sm ">Details</a>
+            </td>-->
+        </tr>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
