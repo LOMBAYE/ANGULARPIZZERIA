@@ -63,6 +63,7 @@ export interface Commande{
     date:Date,
     client:User,
     prix:number,
+    expedie:boolean,
     Produits:ligneDeCom[]
 }
 export interface CommandeDunClient{
@@ -81,11 +82,40 @@ export interface User{
     email:string,
     telephone:string,
 }
-
+export interface Livreur{
+    "matricule": string,
+    "etat": string,
+    "livraisons": string[],
+    "id": number,
+    "email": string,
+}
 export interface Zone{
     id: number
     nom:string,
     commandes:Commande[],
     coutLivraison:number,
     quartiers:{nom:string}[]
+}
+export interface Livraison{
+    id: number,
+    isEtat:boolean,
+    commandes:Commande[],
+    livreur:{
+        matricule: string,
+        etat: string,
+        email: string,
+        nomComplet: string
+    },
+    zone:{
+        id: number,
+        nom:string,
+    },
+    date:Date,
+}
+export interface Produit{
+    id: number,
+    nom:string,
+    image:string,
+    prix:number,
+    burgers?:Burger[]
 }

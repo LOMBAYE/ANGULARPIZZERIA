@@ -18,6 +18,8 @@ commandes!:Commande[]
 
     this.comServ.commandesDunClient(2).subscribe(
       res =>{
+        console.log(res);
+        
         this.commandesDunClient = res;
         this.commandes = this.commandesDunClient.commandes;
     })

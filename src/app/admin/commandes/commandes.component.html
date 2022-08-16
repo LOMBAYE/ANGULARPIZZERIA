@@ -3,10 +3,14 @@
         <input type="date" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search" NgModel />
     </div>
 </div>
-<select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
+<!--<select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
+    <option selected>Livrer pour la zone ---</option>
+    <option value="{{zone.id}}" *ngFor="let zone of zones" (input)="toZone(zone.id)">{{zone.nom}}</option>
+ </select>-->
+<!--<select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
     <option selected>Les commandes du ---</option>
     <option value="{{tab}}" *ngFor="let tab of tabs,let i= index">{{tab}}</option>
- </select>
+ </select>-->
 <h5 class="card-title">Les commandes d'aujourdhui:</h5>
 <div class="container mt-5">
     <table class="table table-bordeless">
@@ -22,13 +26,13 @@
         <tr *ngFor="let commande of commandes,let i= index" class="bg-light">
             <td>{{i +1}}</td>
             <td>{{commande.numero}}</td>
-            <td>{{ commande.date }}</td>
+            <td>{{ commande.date |date:'HH:mm' }}</td>
             <td class="font-weight-bold">{{commande.client.nomComplet}}</td>
             <td>{{commande.client.telephone}}</td>
             <td>{{commande.isEtat}}</td>
             <td class="text-center">
                 <button class="btn btn-dark text-success" *ngIf="!validated(commande)" [disabled]="cancelled(commande)" (click)="changeState(commande.id,'validée')">Valider</button>
-                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulee')">Annuler</button>
+                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulée')">Annuler</button>
                 <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/commandes',commande.id]">Details</button>
             </td>
         </tr>

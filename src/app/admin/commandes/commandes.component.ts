@@ -25,10 +25,15 @@ zones:Zone[]=[]
       const now=this.comServ.nowDate();
           this.comServ.commandes().subscribe(
         data=>{
-          this.commandes=data;
+          // console.log(data);
+          // this.commandes=data;
           data.forEach(
             res=>{
-                this.tabs.push(this.comServ.splitDate(res.date.toString()))
+              if(this.comServ.splitDate(res.date.toString())==now){
+                // this.tabs.push(this.comServ.splitDate(res.date.toString()))
+                this.commandes.push(res)
+              }
+          //     // console.log(this.comServ.splitDate(res.date.toString())==now);
               })
         }
       )
@@ -43,16 +48,17 @@ zones:Zone[]=[]
             })
         })  
     }
-  sameDate(tab:string[]){
-   return tab.filter(
-      (element, i) => i === tab.indexOf(element))
-  }
-  
+
   changeState(id:number,toDo:string){
       this.http.put<any>("http://127.0.0.1:8000/api/commandes/"+id, { 'isEtat': toDo}).subscribe(data => {})
       location.reload();
   }
   
+  sameDate(tab:string[]){
+    return tab.filter(
+       (element, i) => i === tab.indexOf(element))
+   }
+   
   cancelled(command:Commande){
     if(command.isEtat=='en cours'|| command.isEtat=='validée' ){
       return false
@@ -71,5 +77,11 @@ zones:Zone[]=[]
       return false
     }
     return true
+  }
+  toZone(id:number){
+    alert('Please enter a zone')
+    console.log(id);
+    
+    this.router.navigate(['/admin/commandes/zone/',id])
   }
 }

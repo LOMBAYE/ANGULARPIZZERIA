@@ -1,1 +1,30 @@
-<p>details-livraison works!</p>
+<a routerLink="/admin/livraisons">
+    <button class="btn btn-primary btn-lg">Retour a la liste</button>
+</a>
+<div class="container mt-5">
+    <table class="table table-bordered table-striped">
+        <tr class="bg-primary text-white mt-bordered">
+            <th class="p-2">#</th>
+            <th>Date de la commande</th>
+            <th>N° commande</th>
+            <th>Nom du client</th>
+            <th>Etat</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <tr *ngFor="let commande of commandes,let i= index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td>{{commande.date |date:'YYYY-MM-dd'}}</td>
+            <td class="font-weight-bold">{{commande.numero}}</td>
+            <td>{{commande.client.nomComplet}}</td>
+            <td>{{commande.isEtat}}</td>
+            <td class="text-center">
+                <button class="btn btn-warning text-dark" [disabled]="commande.isEtat!='en cours de livraison'" (click)="changeState(commande.id,'finalisée')">Finaliser</button>
+                <button class="btn  btn-primary text-danger ms-2" [disabled]="commande.isEtat!='en cours de livraison'" (click)="changeState(commande.id,'annulée')">Annuler</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<br>

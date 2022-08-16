@@ -23,7 +23,8 @@
             </td>
         </tr>
     </table>
-    <button class="btn btn-primary btn-lg float-end" (click)="deliver()" type="button">Livrer</button>
+    <button class="btn btn-primary btn-lg float-end" [disabled]="tab.length<=0" (click)="deliver()" type="button">Livrer</button>
+    <small *ngIf="livreurs.length==0" class="text-danger">Livreur indisponible pour le moment</small>
 </div>
 <br>
 <br>

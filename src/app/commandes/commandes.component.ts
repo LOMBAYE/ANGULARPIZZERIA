@@ -32,7 +32,7 @@ constructor(private comServ:CommandeService,private http:HttpClient,private rout
     )
     // console.log((this.tabs))
   }
-sameDate(tab:string[]){
+filter(tab:string[]){
  return tab.filter(
     (element, i) => i === tab.indexOf(element))
 }

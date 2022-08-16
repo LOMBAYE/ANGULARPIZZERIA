@@ -1,1 +1,28 @@
-<p>liste des livraisons</p>
+<h5 class="title text-center">Les livraisons</h5>
+<div class="container mt-5">
+    <table class="table table-bordeless">
+        <tr class="bg-primary mt-bordered">
+            <th>#</th>
+            <th>Nom Livreur</th>
+            <th>Zone</th>
+            <th>Etat</th>
+            <th>Nbre de commandes</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <tr *ngFor="let livraison of livraisons,let i= index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td class="font-weight-bold">{{livraison.livreur.nomComplet}}</td>
+            <td>{{livraison.zone.nom}}</td>
+            <td>{{etatLiv(livraison.isEtat)}}</td>
+            <td>{{livraison.commandes.length}}</td>
+            <td class="text-center">
+                <!--<button class="btn btn-dark text-success" *ngIf="!validated(commande)" [disabled]="cancelled(commande)" (click)="changeState(commande.id,'validée')">Valider</button>
+                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulée')">Annuler</button>-->
+                <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/livraisons',livraison.id]">Details</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br>
+<br>

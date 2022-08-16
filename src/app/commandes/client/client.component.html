@@ -13,13 +13,13 @@
     <tbody>
         <tr *ngFor="let order of commandes,let i= index">
             <th scope="row">{{i+1}}</th>
-            <td>{{order.date}}</td>
+            <td>{{order.date |date:'HH:mm'}}</td>
             <td>{{order.numero}}</td>
             <td>{{order.isEtat}}</td>
             <td>{{modeRec(order.modeReception)}}</td>
             <td class="text-center">
                 <!--<button class="btn btn-warning text-dark"> Livrer</button>-->
-                <button [disabled]="cancelled(order)" class="btn  btn-danger text-dark"><a (click)="cancelCommand(order.id)">Annuler</a></button>
+                <button [disabled]="order.isEtat!='en cours'" class="btn btn-  btn-danger text-dark"><a (click)="cancelCommand(order.id)">Annuler</a></button>
                 <button class="btn btn-outline-primary btn-sm "><a [routerLink]="['/commandes',order.id]" >Details</a></button>
             </td>
         </tr>
