@@ -10,7 +10,6 @@ import { ProduitsService } from '../service/produits.service';
 export class ProduitsComponent implements OnInit {
 products:Produit[]=[]
 search:string = ''
-// selected: string='';
 
   constructor(private prodServ:ProduitsService) { }
 
@@ -18,11 +17,10 @@ search:string = ''
       this.prodServ.allProducts().subscribe(
         products => {
           this.products = products;
-          // console.log(products);
         })
   }
+
   selectedProduct(e:any){
-    console.log(e.target.value);
    this.prodServ.setValue(e.target.value);
   }
 }
