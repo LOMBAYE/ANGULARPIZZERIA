@@ -1,6 +1,7 @@
 <a routerLink="/admin/livraisons">
     <button class="btn btn-primary btn-lg">Retour a la liste</button>
 </a>
+<p class="text-center">Livraison effectuée le {{livraison.date |date:'dd-MM-yyyy'}} dans la {{livraison.zone.nom}}</p>
 <div class="container mt-5">
     <table class="table table-bordered table-striped">
         <tr class="bg-primary text-white mt-bordered">

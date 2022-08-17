@@ -1,23 +1,24 @@
+<div class="form-outline float-end">
+    <input type="date" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search par etat" NgModel />
+</div>
 <h5 class="title text-center">Les livraisons</h5>
 <div class="container mt-5">
     <table class="table table-bordeless">
-        <tr class="bg-primary mt-bordered">
-            <th>#</th>
+        <tr class="bg-primary text-white mt-bordered">
+            <th class="p-2">#</th>
+            <th>Date</th>
             <th>Nom Livreur</th>
             <th>Zone</th>
-            <th>Etat</th>
             <th>Nbre de commandes</th>
             <th class="text-center">Actions</th>
         </tr>
-        <tr *ngFor="let livraison of livraisons,let i= index" class="bg-light">
+        <tr *ngFor="let livraison of livraisons |datepipe:search,let i= index" class="bg-light">
             <td>{{i +1}}</td>
+            <td>{{livraison.date|date:'dd-MM-yyyy HH:mm'}}</td>
             <td class="font-weight-bold">{{livraison.livreur.nomComplet}}</td>
             <td>{{livraison.zone.nom}}</td>
-            <td>{{etatLiv(livraison.isEtat)}}</td>
             <td>{{livraison.commandes.length}}</td>
             <td class="text-center">
-                <!--<button class="btn btn-dark text-success" *ngIf="!validated(commande)" [disabled]="cancelled(commande)" (click)="changeState(commande.id,'validée')">Valider</button>
-                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulée')">Annuler</button>-->
                 <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/livraisons',livraison.id]">Details</button>
             </td>
         </tr>

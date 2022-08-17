@@ -7,8 +7,16 @@ import { Produit } from 'src/models/Produits.model';
   providedIn: 'root'
 })
 export class ProduitsService {
-
-  constructor(private http:HttpClient) { }
+  value: string;
+  constructor(private http:HttpClient) {
+    this.value="";
+   }
+   setValue(data: string) {
+    this.value= data;
+   }
+   getValue() {
+    return this.value;
+   }
 
 allProducts():Observable<Produit[]>{
   return this.http.get<Produit[]>("http://127.0.0.1:8000/api/produits")

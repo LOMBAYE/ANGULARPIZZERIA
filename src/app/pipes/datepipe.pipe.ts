@@ -5,22 +5,16 @@ import { CommandeService } from '../service/commande.service';
   name: 'datepipe'
 })
 export class DatepipePipe implements PipeTransform {
-  constructor(private comServ:CommandeService){
+  transform(items: any[], searchText: string): any[] {
+    if (!items) return [];
+    if (!searchText) return items;
+  
+    return items.filter(item => {
+      return Object.keys(item).some(key => {
+        return String(item[key]).toUpperCase().startsWith(searchText.toUpperCase()) || String(item[key]).toUpperCase().includes(searchText.toUpperCase());
+      });
+    });
+   }
 
-  }
-  transform(value: any, search: string,date:any): any {
-    const now=this.comServ.nowDate();
-
-    if(value.length===0 || search.length===0){
-      return value;
-    }
-    const results=[]
-    for (let val of value) {
-      if(val[this.comServ.splitDate(date.toString())]== search ){
-        results.push(val);
-      }
-    }
-    return results;
-  }
 
 }

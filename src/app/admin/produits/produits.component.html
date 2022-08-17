@@ -1,1 +1,30 @@
-<p>liste des produits</p>
+<select class="form-select float-end" aria-label="Default select example" (change)="selectedProduct($event)" routerLink="/admin/produits/new" style="width:13vw;">
+    <option selected>-- Ajouter un produit --</option>
+    <option value="burgers" >Burger</option>
+    <option value="menus" >Menu</option>
+    <option value="boissons" >Boisson</option>
+    <option value="frites" >Frite</option>
+ </select>
+<h5 class="title text-center mt-2">Liste des produits</h5>
+<div class="container mt-5">
+    <table class="table table-bordeless">
+        <tr class="bg-primary text-white mt-bordered">
+            <th class="p-2">#</th>
+            <th>Nom Du Produit</th>
+            <th>Prix</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <tr *ngFor="let product of products,let i= index" class="bg-light">
+            <td>{{i +1}}</td>
+            <td>{{product.nom}}</td>
+            <td class="font-weight-bold">{{product.prix}}</td>
+            <td class="text-center">
+                <button class="btn btn-dark text-success">Modifier</button>
+                <button class="btn  btn-danger text-danger ms-2">Supprimer</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br>
+<br>

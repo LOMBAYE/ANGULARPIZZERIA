@@ -25,21 +25,17 @@ zones:Zone[]=[]
       const now=this.comServ.nowDate();
           this.comServ.commandes().subscribe(
         data=>{
-          // console.log(data);
-          // this.commandes=data;
-          data.forEach(
-            res=>{
-              if(this.comServ.splitDate(res.date.toString())==now){
-                // this.tabs.push(this.comServ.splitDate(res.date.toString()))
-                this.commandes.push(res)
-              }
-          //     // console.log(this.comServ.splitDate(res.date.toString())==now);
-              })
+          this.commandes=data;
+          // data.forEach(
+          //   res=>{
+          //     if(this.comServ.splitDate(res.date.toString())==now){
+          //       this.commandes.push(res)
+          //     }
+          //     })
         }
       )
       this.zoneServ.getZones().subscribe(
         zones=>{
-          // this.zones=zones;
           zones.forEach(
             zone=>{
               if(zone.commandes.length!=0){

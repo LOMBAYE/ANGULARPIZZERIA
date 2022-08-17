@@ -1,4 +1,7 @@
 <h5>List of my orders: {{commandesDunClient.nomComplet}}</h5>
+<div class="form-outline float-end">
+    <input type="text" id="form1" class="form-control" [(ngModel)]="research" placeholder="Search par etat" NgModel />
+</div>
 <table class="table caption-top">
     <thead>
         <tr>
@@ -6,16 +9,16 @@
             <th scope="col">Date</th>
             <th scope="col">Num° Commande</th>
             <th scope="col">Etat</th>
-            <th class="text-center">Actions</th>
             <th scope="col">Mode de reception</th>
+            <th class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let order of commandes,let i= index">
+        <tr *ngFor="let order of commandes |price:research,let i= index">
             <th scope="row">{{i+1}}</th>
-            <td>{{order.date |date:'HH:mm'}}</td>
+            <td>{{order.date |date:'dd-MM-yyyy HH:mm'}}</td>
             <td>{{order.numero}}</td>
-            <td>{{order.isEtat}}</td>
+            <td>{{order.isEtat }}</td>
             <td>{{modeRec(order.modeReception)}}</td>
             <td class="text-center">
                 <!--<button class="btn btn-warning text-dark"> Livrer</button>-->

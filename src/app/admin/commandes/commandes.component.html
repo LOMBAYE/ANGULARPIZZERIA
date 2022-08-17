@@ -1,21 +1,11 @@
-<div class="input-group">
-    <div class="form-outline">
-        <input type="date" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search" NgModel />
-    </div>
+<div class="form-outline float-end">
+    <input type="date" id="form1" class="form-control" [(ngModel)]="search" placeholder="Search par etat" NgModel />
 </div>
-<!--<select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
-    <option selected>Livrer pour la zone ---</option>
-    <option value="{{zone.id}}" *ngFor="let zone of zones" (input)="toZone(zone.id)">{{zone.nom}}</option>
- </select>-->
-<!--<select class="form-select float-end" aria-label="Default select example" style="width:13vw;">
-    <option selected>Les commandes du ---</option>
-    <option value="{{tab}}" *ngFor="let tab of tabs,let i= index">{{tab}}</option>
- </select>-->
 <h5 class="card-title">Les commandes d'aujourdhui:</h5>
 <div class="container mt-5">
     <table class="table table-bordeless">
-        <tr class="bg-primary mt-bordered">
-            <th>#</th>
+        <tr class="bg-primary text-white mt-bordered">
+            <th class="p-2">#</th>
             <th>n° Commande</th>
             <th>Heure</th>
             <th>Nom Client</th>
@@ -23,7 +13,7 @@
             <th>Etat</th>
             <th class="text-center">Actions</th>
         </tr>
-        <tr *ngFor="let commande of commandes,let i= index" class="bg-light">
+        <tr *ngFor="let commande of commandes |datepipe:search,let i= index" class="bg-light">
             <td>{{i +1}}</td>
             <td>{{commande.numero}}</td>
             <td>{{ commande.date |date:'HH:mm' }}</td>
@@ -32,8 +22,8 @@
             <td>{{commande.isEtat}}</td>
             <td class="text-center">
                 <button class="btn btn-dark text-success" *ngIf="!validated(commande)" [disabled]="cancelled(commande)" (click)="changeState(commande.id,'validée')">Valider</button>
-                <button class="btn  btn-danger text-danger" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulée')">Annuler</button>
-                <button class="btn btn-outline-primary btn-sm" [routerLink]="['/admin/commandes',commande.id]">Details</button>
+                <button class="btn  btn-danger text-danger ms-2" *ngIf="validated(commande)" (click)="changeState(commande.id,'annulée')">Annuler</button>
+                <button class="btn btn-outline-primary btn-sm ms-2" [routerLink]="['/admin/commandes',commande.id]">Details</button>
             </td>
         </tr>
     </table>

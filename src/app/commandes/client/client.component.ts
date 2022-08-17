@@ -11,15 +11,13 @@ import { Commande, CommandeDunClient } from 'src/models/Produits.model';
 export class ClientComponent implements OnInit {
 commandesDunClient!:CommandeDunClient
 commandes!:Commande[]
-
+research:string=this.comServ.nowDate();
   constructor(private comServ:CommandeService,private http:HttpClient) { }
 
   ngOnInit(): void {
 
     this.comServ.commandesDunClient(2).subscribe(
       res =>{
-        console.log(res);
-        
         this.commandesDunClient = res;
         this.commandes = this.commandesDunClient.commandes;
     })

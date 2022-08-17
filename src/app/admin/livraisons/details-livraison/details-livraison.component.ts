@@ -17,13 +17,11 @@ commandes:Commande[]=[];
 
   ngOnInit(): void {
     this.livId=+this.actRoute.snapshot.params['id'];
-    // console.log(this.livId);
     this.livServ.oneLivraison(this.livId).subscribe(
       data =>{
+        this.livraison=data;
         this.commandes=data.commandes;
-        console.log(data.commandes);
       })
-    
   }
   changeState(id:number,toDo:string){
     this.http.put<any>("http://127.0.0.1:8000/api/commandes/"+id, { 'isEtat': toDo}).subscribe(data => {})

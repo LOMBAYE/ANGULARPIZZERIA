@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CommandeService } from 'src/app/service/commande.service';
 import { Livraison } from 'src/models/Produits.model';
 import { LivraisonService } from '../service/livraison.service';
 
@@ -10,7 +11,9 @@ import { LivraisonService } from '../service/livraison.service';
 })
 export class LivraisonsComponent implements OnInit {
 livraisons: Livraison[] = [];
-  constructor(private http:HttpClient,private livServ:LivraisonService) { }
+search=this.comServ.nowDate();
+
+  constructor(private http:HttpClient,private livServ:LivraisonService,private comServ:CommandeService) { }
 
   ngOnInit(): void {
     this.livServ.livraisons().subscribe(
